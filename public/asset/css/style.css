@@ -1,11 +1,28 @@
+/* Top Navbar */
 .page-navbar {
     box-shadow: 0 0 10px;
-    width: 100%;
+    /* width: 100%; */
+    z-index: 1;
     /* position: fixed; */
     background-color: white;
     height: auto;
 }
 
+@media (max-width: 768px) {
+    .top-nav-item {
+        display: inline-block;
+
+        width: 100%;
+        text-align: center;
+    }
+
+    .top-nav-item .btn-group {
+        width: 100%;
+    }
+
+}
+
+/* Side navbar */
 .body-navbar {
     background-color: #2196F3;
     position: sticky;
@@ -29,6 +46,7 @@
     color: gray;
 }
 
+/* Div Outside content */
 .content-wrapper {
     padding-top: 1.5rem;
     /* background-color: gray; */
