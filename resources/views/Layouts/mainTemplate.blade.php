@@ -7,7 +7,7 @@
 @section('pageTemplate')
 <nav class="navbar navbar-light bg-light page-navbar">
     <div class="top-nav-item navbar-brand">
-        <a href="">Just Du It !</a>
+        <a href="{{ route("dashboard") }}">Just Du It !</a>
     </div>
     <form class="form-inline top-nav-item top-nav-searchbar">
         <div class="row btn-group">
@@ -16,14 +16,32 @@
         </div>
     </form>
     <div class="login-register top-nav-item">
-        <a class="btn text-primary my-2 my-sm-0" type="submit" href="{{ route('login') }}">Login</a>
-        <a class="btn text-primary my-2 my-sm-0" type="submit">Register</a>
+        <a class="btn text-primary my-2 my-sm-0 {{ (request()->path() == 'login') ? 'active' : '' }}" type="submit"
+            href="{{ route('login') }}">Login</a>
+        <a class="btn text-primary my-2 my-sm-0" type="submit" href="{{ route("register") }}">Register</a>
     </div>
 </nav>
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-2 body-navbar">
+        <div id="sidebar" class="col-md-3 container-fluid">
+            <div class="row sidebar-content">
+                <a href=""> View All Shoe </a>
+            </div>
+            <div class="row sidebar-content">
+                <a href=""> View Cart </a>
+            </div>
+            <div class="row sidebar-content">
+                <a href=""> View Transaction </a>
+            </div>
+        </div>
+        <div class="col-md-9">
+            @yield('content')
+        </div>
+    </div>
+
+    {{-- <div class="row">
+        <div class="col-md-2" id="sidebar">
             <div class="row">
                 <div class="col-12">
                     <h5 class="text-large"><a href=""> View All Shoe </a></h5>
@@ -38,11 +56,11 @@
                     <hr>
                 </div>
             </div>
-        </div>
-        <div class="col-md-10 content-wrapper">
-            @yield('content')
-        </div>
-    </div>
+        </div> --}}
+    {{-- <div class="col-md-10 content-wrapper"> --}}
+
+    {{-- </div> --}}
+    {{-- </div> --}}
 </div>
 
 @endsection

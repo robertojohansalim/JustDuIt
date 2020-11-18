@@ -17,5 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/','PageController@index')->name('login');
-Route::get('/dashboard','PageController@dashboard')->name('dashboard');
+Route::get('/','PageController@dashboard')->name('dashboard');
+// Access Control
+Route::get('/login','PageController@login')->name('login');
+Route::get('/register','PageController@register')->name('register');
