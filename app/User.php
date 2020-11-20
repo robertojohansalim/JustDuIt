@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'email', 'password',
     ];
 
     /**
@@ -36,4 +36,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public static function addUser($username, $password, $email, $id_role = 2){
+        $user = new User();
+        $user->username = $username;
+        $user->password = $password;
+        $user->email = $email;
+        $user->id_role = $id_role; 
+        return $user->save();
+    }
 }

@@ -11,7 +11,13 @@
         <div class="">
             <h1 class="login-header text-center bg-primary text-white py-2">Register</h1>
         </div>
-        <form class="p-5">
+
+        @foreach ($errors->all() as $error)
+        {{ $error }} <br>
+        @endforeach
+
+        <form class="p-5" target="{{ route('register') }}" method="POST">
+            {{ csrf_field() }}
             <div class="form-group row d-flex justify-content-center">
                 <label for="usernameForm" class="col-sm-3 col-form-label text-right">Username</label>
                 <div class="col-sm-6">
@@ -35,7 +41,7 @@
                 <label for="passwordComfirmForm" class="col-sm-3 col-form-label text-right">Confirm Password</label>
                 <div class="col-sm-6">
                     <input type="password" class="form-control" id="passwordComfirmForm" placeholder="password"
-                        name="password_confirm">
+                        name="password_confirmation">
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-center">
