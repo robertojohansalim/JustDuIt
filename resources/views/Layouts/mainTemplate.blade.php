@@ -5,6 +5,7 @@
 @endsection
 
 @section('pageTemplate')
+
 <nav class="navbar navbar-light bg-light page-navbar">
     <div class="top-nav-item navbar-brand">
         <a href="{{ route("dashboard") }}">Just Du It !</a>
@@ -22,8 +23,9 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <div class="row">
+<div class="wrapper container-fluid">
+    <div class="row h-100">
+        {{-- <div id="sidebar" class="col-md-3 container-fluid"> --}}
         <div id="sidebar" class="col-md-3 container-fluid">
             <div class="row sidebar-content">
                 <a href=""> View All Shoe </a>
@@ -41,26 +43,30 @@
     </div>
 
     {{-- <div class="row">
-        <div class="col-md-2" id="sidebar">
-            <div class="row">
-                <div class="col-12">
-                    <h5 class="text-large"><a href=""> View All Shoe </a></h5>
-                    <hr>
-                </div>
-                <div class="col-12">
-                    <h5><a href=""> View Cart </a></h5>
-                    <hr>
-                </div>
-                <div class="col-12">
-                    <h5><a href=""> View Transaction </a></h5>
-                    <hr>
-                </div>
-            </div>
-        </div> --}}
+                <div class="col-md-2" id="sidebar">
+                    <div class="row">
+                        <div class="col-12">
+                            <h5 class="text-large"><a href=""> View All Shoe </a></h5>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <h5><a href=""> View Cart </a></h5>
+                            <hr>
+                        </div>
+                        <div class="col-12">
+                            <h5><a href=""> View Transaction </a></h5>
+                            <hr>
+                        </div>
+                    </div>
+                </div> --}}
     {{-- <div class="col-md-10 content-wrapper"> --}}
 
     {{-- </div> --}}
     {{-- </div> --}}
 </div>
 
+@endsection
+
+@section('script')
+{{-- <script src="{{ asset('asset/js/script.js') }}"></script> --}}
 @endsection

@@ -7,7 +7,7 @@
   </div>
   <form class="form-inline login-register top-nav-item">
     <a class="btn text-primary my-2 my-sm-0 {{ (request()->path() == 'login') ? 'active' : '' }}" type="submit"
-      href="{{ route('dashboard') }}">Login</a>
+      href="{{ route('login') }}">Login</a>
     <a class="btn text-primary my-2 my-sm-0" type="submit" href="{{ route('register') }}">Register</a>
   </form>
 </nav>

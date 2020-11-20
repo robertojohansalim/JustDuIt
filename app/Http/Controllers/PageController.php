@@ -19,4 +19,7 @@ class PageController extends Controller
         return view('Pages/register');
     }
 
+    public function product($id){
+        return view("Pages/product");
+    }
 }

@@ -1,5 +1,5 @@
 {{-- @extends('../Layouts/loginTemplate') --}}
-@extends('../Layouts/mainTemplate')
+@extends('../Layouts/loginTemplate')
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('asset/css/page/login-register.css') }}">
