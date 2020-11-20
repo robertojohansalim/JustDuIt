@@ -2,7 +2,7 @@ console.log("Custom Script")
 
 function resizeWrapper(){
     console.log("Resizing")
-    // 693.091
+    // Achieveing Dynamic Side Navigation Height
     var window_height = $(this).height()
     var navbar_height = $('nav').outerHeight();
     console.log(window_height)
