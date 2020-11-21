@@ -25,5 +25,7 @@ class LoginController extends Controller
 
     public static function logout(){
         // Auth::login
+        Auth::logout();
+        return redirect()->route('dashboard');
     }
 }

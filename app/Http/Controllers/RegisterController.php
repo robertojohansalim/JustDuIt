@@ -33,10 +33,11 @@ class RegisterController extends Controller
         }
 
         // Store Data
-        return !User::addUser(
+        $user = User::addUser(
             $request->get('username'), 
-            $request->get('password'), 
+            bcrypt($request->get('password')), 
             $request->get('email')
         );
+        return !LoginController::authenticate($request);
     }
 }

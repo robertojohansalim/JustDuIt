@@ -16,11 +16,25 @@
             <button class="btn btn-outline-primary col-3" type="submit">Search</button>
         </div>
     </form>
+    @if (auth()->user())
+    <div class="dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            {{ auth()->user()->username }}
+        </a>
+        <div class="dropdown-menu  dropdown-menu-right">
+            <a class="dropdown-item" href="#">Profile</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="{{ route('logout') }}">Logout</a>
+        </div>
+    </div>
+    @else
     <div class="login-register top-nav-item">
         <a class="btn text-primary my-2 my-sm-0 {{ (request()->path() == 'login') ? 'active' : '' }}" type="submit"
             href="{{ route('login') }}">Login</a>
         <a class="btn text-primary my-2 my-sm-0" type="submit" href="{{ route("register") }}">Register</a>
     </div>
+    @endif
 </nav>
 
 <div class="wrapper container-fluid">

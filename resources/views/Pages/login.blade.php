@@ -13,7 +13,7 @@
             <h1 class="login-header text-center bg-primary text-white py-2">Login</h1>
         </div>
 
-        <form class="p-5" target="{{ route('login') }}" method="POST">
+        <form class="p-5" action="{{ route('login') }}" method="POST">
             {{ csrf_field() }}
             @error('msg')
             <div class="alert alert-danger text-center" role="alert">

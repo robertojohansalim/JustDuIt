@@ -13,10 +13,14 @@
         </div>
 
         @foreach ($errors->all() as $error)
+        {{-- @php
+        dump($error);
+        @endphp --}}
         {{ $error }} <br>
         @endforeach
 
-        <form class="p-5" target="{{ route('register') }}" method="POST">
+
+        <form class="p-5" action="{{ route('register') }}" method="POST">
             {{ csrf_field() }}
             <div class="form-group row d-flex justify-content-center">
                 <label for="usernameForm" class="col-sm-3 col-form-label text-right">Username</label>

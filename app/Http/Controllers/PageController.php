@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -14,7 +15,7 @@ class PageController extends Controller
     {
         if($request->isMethod("POST")){
             if(LoginController::authenticate($request)){
-                return redirect()->intended('dashboard');
+                return redirect()->intended(url()->route('dashboard'));
             }
             return back()->withInput()->withErrors(['msg'=>'login fail, check your email or password']);
         }
@@ -30,7 +31,7 @@ class PageController extends Controller
                 return redirect()->route('dashboard');
             }
             else{
-                back()->withInput()->withErrors($errors);
+                redirect()->route('register')->withInput()->withErrors($errors);
             }
         }
         return view('Pages/register');

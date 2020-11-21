@@ -28,3 +28,5 @@ Route::match(['post','get'],'/login','PageController@login')->name('login');
 Route::match(['post','get'],'/register','PageController@register')->name('register');
 // Route::get('/register','PageController@register')->name('register');
 // Route::post('/register','PageController@register');
+
+Route::get('/logout', 'LoginController@logout')->name('logout');
