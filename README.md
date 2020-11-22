@@ -29,6 +29,7 @@ Web Programming Project
     php artisan key:generate
     php artisan migrate
     php artisan db:seed
+    php artisan storage:link
     ```
 ## How to run this project
 1. Open XAMPP control panel then start Apache and Mysql module.
