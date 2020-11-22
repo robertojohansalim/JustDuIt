@@ -17,6 +17,10 @@ class CreateRoleTable extends Migration
             $table->id();
             $table->string("role_name");
         });
+        // Adding Constraint of User to this table
+        Schema::table('users', function($table) {
+            $table->foreign('id_role')->references('id')->on('role');
+        });
     }
 
     /**

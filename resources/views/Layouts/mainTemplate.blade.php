@@ -1,7 +1,8 @@
 @extends('Layouts/base')
 
 @section('style')
-{{-- <link rel="stylesheet" href="{{ asset('asset/css/main.css') }}"> --}}
+{{-- <link rel="stylesheet" href="{{ asset('asset/css/main.css') }}">
+--}}
 @endsection
 
 @section('pageTemplate')
@@ -16,11 +17,11 @@
             <button class="btn btn-outline-primary col-3" type="submit">Search</button>
         </div>
     </form>
-    @if (auth()->user())
+    @if(auth()->user())
     <div class="dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
-            {{ auth()->user()->username }}
+            {{ auth()->user()->username }} ({{ auth()->user()->role->role_name }})
         </a>
         <div class="dropdown-menu  dropdown-menu-right">
             <a class="dropdown-item" href="#">Profile</a>
@@ -39,8 +40,8 @@
 
 <div class="wrapper container-fluid">
     <div class="row h-100">
-        {{-- <div id="sidebar" class="col-md-3 container-fluid"> --}}
-        <div id="sidebar" class="col-md-3 container-fluid">
+        <div id="sidebar" class="col-md-3 col-lg-2 container-fluid">
+            @if(auth()->user())
             <div class="row sidebar-content">
                 <a href=""> View All Shoe </a>
             </div>
@@ -50,8 +51,14 @@
             <div class="row sidebar-content">
                 <a href=""> View Transaction </a>
             </div>
+            @else
+            <div class="row sidebar-content">
+                <a href=""> View All Shoe </a>
+            </div>
+            @endif
         </div>
-        <div class="col-md-9">
+
+        <div class="col-md-9 col-lg-10">
             @yield('content')
         </div>
     </div>

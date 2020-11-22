@@ -38,6 +38,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    public function role(){
+        return $this->hasOne('App\Role', 'id', 'id_role');
+    }
+
     public static function addAndAuthenticateUser($username, $password, $email, $id_role = 2){
         $user = new User();
         $user->username = $username;
