@@ -9,7 +9,7 @@
 
 <nav class="navbar navbar-light bg-light page-navbar">
     <div class="top-nav-item navbar-brand">
-        <a href="{{ route("dashboard") }}">Just Du It !</a>
+        <a href="{{ route("dashboard") }}" style="text-decoration: none">Just Du It !</a>
     </div>
     <form class="form-inline top-nav-item top-nav-searchbar">
         <div class="row btn-group">
