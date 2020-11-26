@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="container content-container">
-    <h1>Lorem Ipsum</h1>
+    <h1>View Shoe</h1>
     <div class="row">
         @php
         $collection = [1,2,3,4,5,6]
