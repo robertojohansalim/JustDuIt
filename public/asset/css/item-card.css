@@ -13,6 +13,10 @@
     color: #0e469a;
 }
 
+.card-body>h6 {
+    color: #1e6ce0;
+}
+
 .card-body>p {
     color: black;
 }
