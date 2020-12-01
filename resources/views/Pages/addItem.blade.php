@@ -10,7 +10,7 @@
     <h1>Lorem Ipsum</h1>
     <div class="row">
         <div class="col-4">
-            <img class="card-img" src="{{ asset('image/EG4958_SL_eCom.jpg') }}">
+            <img class="card-img" src="{{ asset('image/Adidus_Superstar.jpg') }}">
         </div>
         <div class="col-8">
             <h1>Name : Adidas</h1>
@@ -33,6 +33,6 @@
 
 @section('script')
 <script>
-console.log("Login Page");
+    console.log("Login Page");
 </script>
 @endsection

@@ -4,15 +4,15 @@
     padding-right: 0.5rem;
 }
 
-.card:hover{
+.card:hover {
     transform: scale(1.05);
-    box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
 }
 
-.card-body > h5 {
+.card-body>h5 {
     color: #0e469a;
 }
 
-.card-body > p {
+.card-body>p {
     color: black;
 }

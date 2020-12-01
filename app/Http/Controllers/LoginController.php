@@ -15,11 +15,6 @@ class LoginController extends Controller
         $remember = ($request->get('remember') != null) ? true : false;
         if($remember){
             // Save Email & Password
-            session([
-                'email'=>$credential['email'],
-                'password'=>$credential['password']
-            ]);
-
             Cookie::queue('email', $credential['email'], 120);
             Cookie::queue('password', $credential['password'], 120);
         }

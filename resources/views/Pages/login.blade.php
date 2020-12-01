@@ -3,6 +3,7 @@
 
 @section('style')
 <link rel="stylesheet" href="{{ asset('asset/css/page/login-register.css') }}">
+<link rel="stylesheet" href="{{ asset('asset/css/form.css') }}">
 @endsection
 
 @section('content')
@@ -70,6 +71,7 @@
 @endsection
 
 @section('script')
+<script src="{{ asset('asset/js/form.js') }}"></script>
 <script>
     console.log("Login Page");
 
