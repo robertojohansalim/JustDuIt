@@ -22,7 +22,7 @@ Route::get('/','PageController@dashboard')->name('dashboard');
 Route::get('/product/{id}', 'PageController@product')->name("product");
 Route::get('/product/{id}/addCart', 'PageController@addToCart')->name("addToCart");
 Route::get('/cart', 'PageController@cart')->name("cart");
-Route::get('/transcation', 'PageController@transaction')->name("transaction");
+Route::get('/transaction', 'PageController@transaction')->name("transaction");
 
 // Access Control
 Route::match(['post','get'],'/login','PageController@login')->name('login');
