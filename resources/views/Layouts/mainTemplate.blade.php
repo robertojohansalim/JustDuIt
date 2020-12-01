@@ -43,13 +43,13 @@
         <div id="sidebar" class="col-md-3 col-lg-2 container-fluid">
             @if(auth()->user())
             <div class="row sidebar-content">
-                <a href=""> View All Shoe </a>
+                <a href="{{ route('dashboard') }}"> View All Shoe </a>
             </div>
             <div class="row sidebar-content">
-                <a href=""> View Cart </a>
+                <a href="{{ route('cart') }}"> View Cart </a>
             </div>
             <div class="row sidebar-content">
-                <a href=""> View Transaction </a>
+                <a href="{{ route('transaction') }}"> View Transaction </a>
             </div>
             @else
             <div class="row sidebar-content">
