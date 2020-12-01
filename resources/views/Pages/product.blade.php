@@ -19,7 +19,7 @@
                 <p>Rp. 1000000</p>
                 <p>Description:<br>Good Quality Shoes!</p>
                 @if (auth()->user())
-                <a href="{{ url('product/1/addCart') }}">
+                <a href="{{ route('addToCart', ['id'=>1]) }}">
                     <button type="button" class="btn btn-primary">Add to Cart</button>
                 </a>
                 @endif
