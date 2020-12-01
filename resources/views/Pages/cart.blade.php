@@ -8,7 +8,7 @@
 @section('content')
 <div class="container content-container">
     <h1>Cart</h1>
-    {{-- <div class="row"> --}}
+    <div class="row">
         @php
         $collection = [1,2,3]
         @endphp
@@ -29,7 +29,7 @@
                 </div>
             </div>
         @endforeach
-    {{-- </div> --}}
+    </div>
 
     <a href="">
         <button type="button" class="btn btn-primary">Check Out</button>
