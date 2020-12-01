@@ -53,7 +53,7 @@
             </div>
             @else
             <div class="row sidebar-content">
-                <a href=""> View All Shoe </a>
+                <a href="{{ route('dashboard') }}"> View All Shoe </a>
             </div>
             @endif
         </div>
