@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','PageController@dashboard')->name('dashboard');
 Route::get('/product/{id}', 'PageController@product')->name("product");
-Route::get('/product/{id}/addCart', 'PageController@addToCart')->name("addToCart");
+Route::get('/addCart/{id}', 'PageController@addToCart')->name("addToCart");
 Route::get('/cart', 'PageController@cart')->name("cart");
 Route::get('/transaction', 'PageController@transaction')->name("transaction");
 
