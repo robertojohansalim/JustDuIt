@@ -21,7 +21,7 @@ class PageController extends Controller
         }
         return view('Pages/login');
     }
-    
+
     public function register(Request $request){
         if($request->isMethod("POST")){
             // Validating Input
@@ -41,5 +41,15 @@ class PageController extends Controller
         return view("Pages/product");
     }
 
+    public function addToCart($id){
+        return view("Pages/addToCart");
+    }
 
+    public function cart(){
+        return view('Pages/cart');
+    }
+
+    public function transaction(){
+        return view('Pages/transaction');
+    }
 }
