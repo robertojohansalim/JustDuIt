@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -51,5 +52,13 @@ class PageController extends Controller
 
     public function transaction(){
         return view('Pages/transaction');
+    }
+
+    public function test(Request $request){
+        if($request->isMethod("POST")){
+            // cook
+        }
+        // return view('test');
+        return response()->view('test')->withCookie(cookie('username', 'hello',5));
     }
 }

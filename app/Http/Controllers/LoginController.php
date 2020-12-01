@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
@@ -18,6 +19,9 @@ class LoginController extends Controller
                 'email'=>$credential['email'],
                 'password'=>$credential['password']
             ]);
+
+            Cookie::queue('email', $credential['email'], 120);
+            Cookie::queue('password', $credential['password'], 120);
         }
         // Log User In with remember me
         return Auth::attempt($credential, $remember);

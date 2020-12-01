@@ -34,3 +34,7 @@ Route::match(['post','get'],'/register','PageController@register')->name('regist
 // Route::post('/register','PageController@register');
 
 Route::get('/logout', 'LoginController@logout')->name('logout');
+
+
+// For Testing Perpose
+Route::any('/test', 'PageController@test')->name('test');
