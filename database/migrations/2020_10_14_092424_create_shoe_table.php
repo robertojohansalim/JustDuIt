@@ -19,6 +19,7 @@ class CreateShoeTable extends Migration
             $table->text('description');
             $table->string('image');
             $table->integer('price');
+            $table->timestamps();
         });
     }
 

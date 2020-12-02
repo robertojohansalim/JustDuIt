@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Shoe;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -9,7 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class PageController extends Controller
 {
     public function dashboard(){
-        return view('Pages/home');
+        $allShoe = Shoe::all();
+        $data = [
+            "allShoe" => $allShoe
+        ];
+        return view('Pages/home', $data);
     }
 
     public function login(Request $request)
@@ -39,7 +44,11 @@ class PageController extends Controller
     }
 
     public function product($id){
-        return view("Pages/product");
+        $shoe = Shoe::find($id);
+        $data = [
+            'shoe'=>$shoe
+        ];
+        return view("Pages/product", $data);
     }
 
     public function addToCart($id){

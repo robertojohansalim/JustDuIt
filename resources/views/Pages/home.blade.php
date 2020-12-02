@@ -9,22 +9,26 @@
 <div class="container content-container">
     <h1>View Shoe</h1>
     <div class="row">
-        @php
-        $collection = [1,2,3,4,5,6]
-        @endphp
-        @foreach ($collection as $item)
+        {{-- @foreach ($collection as $item) --}}
+        @foreach ($allShoe as $shoe)
         {{-- Item Display --}}
         <div class="col-md-4 col-6 card-col">
-            <a class="card" href="{{ route('product', ['id'=>1]) }}">
-                <img class="card-img"
-                    {{-- src="https://static.shop.adidas.co.id/media/catalog/product/cache/2/thumbnail/1200x/9df78eab33525d08d6e5fb8d27136e95/E/G/EG4958_SL_eCom.jpg"> --}}
-                    src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}">
+            <a class="card" href="{{ route('product', ['id'=>$shoe->id]) }}">
+                <img class="card-img" src="{{ asset('product_image/' . $shoe->image) }}">
                 <div class="card-body">
-                    <h5>Adidus Superstar Shoes</h5>
-                    <p>Rp. 1000000</p>
+                    <h5>{{ $shoe->name }}</h5>
+                    <p>Rp. {{ $shoe->price }}</p>
                 </div>
             </a>
         </div>
+        {{-- <div class="col-md-4 col-6 card-col">
+            <a class="card" href="{{ route('product', ['id'=>1]) }}">
+        <img class="card-img" src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}">
+        <div class="card-body">
+            <h5>Adidus Superstar Shoes</h5>
+            <p>Rp. 1000000</p>
+        </div>
+        </a>--}}
         {{-- Item Display END --}}
         @endforeach
     </div>
