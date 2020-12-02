@@ -14,10 +14,11 @@ class CreateTransactionDetailTable extends Migration
     public function up()
     {
         Schema::create('transaction_detail', function (Blueprint $table) {
-            $table->integer('id_transaction_header');
-            $table->integer('id_shoe');
+            $table->foreignId('id_transaction_header')->constrained('transaction_header');
+            $table->foreignId('id_shoe')->constrained('shoe');
             $table->string('image');
             $table->integer('price');
+            $table->integer('quantity');
 
             // Constraint
             $table->primary(['id_transaction_header', 'id_shoe']);
