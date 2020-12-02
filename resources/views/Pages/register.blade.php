@@ -19,8 +19,6 @@
         @endphp --}}
         {{ $error }} <br>
         @endforeach
-
-
         <form class="p-5" action="{{ route('register') }}" method="POST">
             {{ csrf_field() }}
             <div class="form-group row d-flex justify-content-center">

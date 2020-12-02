@@ -43,8 +43,9 @@
                 <label for="imageForm" class="col-sm-3 col-form-label text-right">Image</label>
                 <div class="col-sm-6">
                     <div class="input-group">
-                        <input type="file" class="custom-file-input" id="customFile" name="image">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <input type="file" class="" name="image">
+                        {{-- <input type="file" class="custom-file-input" id="customFile" name="image">
+                        <label class="custom-file-label" for="customFile">Choose file</label> --}}
                     </div>
                 </div>
             </div>

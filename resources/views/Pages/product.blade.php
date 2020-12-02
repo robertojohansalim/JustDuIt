@@ -10,17 +10,17 @@
     <h2><br></h2>
     <div class="row">
         <div class="col-4">
-            <img class="card-img" src="{{ asset('image/Adidus_Superstar.jpg') }}">
+            <img class="card-img" src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}">
         </div>
         <div class="col-8">
             <h2>Adidus Superstar Shoes</h5>
-            <p>Rp. 1000000</p>
-            <p>Description:<br>Good Quality Shoes!</p>
-            @if (auth()->user())
-            <a href="{{ route('addToCart', ['id'=>1]) }}">
-                <button type="button" class="btn btn-primary">Add to Cart</button>
-            </a>
-            @endif
+                <p>Rp. 1000000</p>
+                <p>Description:<br>Good Quality Shoes!</p>
+                @if (auth()->user())
+                <a href="{{ route('addToCart', ['id'=>1]) }}">
+                    <button type="button" class="btn btn-primary">Add to Cart</button>
+                </a>
+                @endif
         </div>
     </div>
 </div>
