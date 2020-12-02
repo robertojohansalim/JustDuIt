@@ -10,17 +10,23 @@
     <h2><br></h2>
     <div class="row">
         <div class="col-4">
-            <img class="card-img" src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}">
+            <img class="card-img" src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}" style="width: 250px; height: 250px">
         </div>
         <div class="col-8">
             <h2>Adidus Superstar Shoes</h5>
-                <p>Rp. 1000000</p>
-                <p>Description:<br>Good Quality Shoes!</p>
-                @if (auth()->user())
+            <p>Rp. 1000000</p>
+            <p>Description:<br>Good Quality Shoes!</p>
+            @if (auth()->user())
+                @if (auth()->user()->role->role_name == 'admin')
+                <a href="">
+                    <button type="button" class="btn btn-primary" style="margin-top: 20px">Update Shoe</button>
+                </a>
+                @else
                 <a href="{{ route('addToCart', ['id'=>1]) }}">
-                    <button type="button" class="btn btn-primary">Add to Cart</button>
+                    <button type="button" class="btn btn-primary" style="margin-top: 20px">Add to Cart</button>
                 </a>
                 @endif
+            @endif
         </div>
     </div>
 </div>

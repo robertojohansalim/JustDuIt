@@ -13,7 +13,7 @@
         <div class="col-4">
             {{-- <img class="card-img"
                 src="https://static.shop.adidas.co.id/media/catalog/product/cache/2/thumbnail/1200x/9df78eab33525d08d6e5fb8d27136e95/E/G/EG4958_SL_eCom.jpg"> --}}
-            <img class="card-img" src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}">
+            <img class="card-img" src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}" style="width: 250px; height: 250px">
         </div>
         <div class="col-8">
             <h2>Adidus Superstar Shoes</h5>
