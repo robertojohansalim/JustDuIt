@@ -75,7 +75,7 @@ class PageController extends Controller
         if($request->isMethod("POST")){
             // cook
         }
-        // return view('test');
-        return response()->view('test')->withCookie(cookie('username', 'hello',5));
+        // CartController::insertIntoCart(1, 10);    
+        return view('test');
     }
 }

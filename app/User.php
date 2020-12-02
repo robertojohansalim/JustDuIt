@@ -42,6 +42,10 @@ class User extends Authenticatable
         return $this->hasOne('App\Role', 'id', 'id_role');
     }
 
+    public function cart(){
+        return $this->hasOne('App\Cart', 'user_id');
+    }
+
     public static function addAndAuthenticateUser($username, $password, $email, $id_role = 2){
         $user = new User();
         $user->username = $username;

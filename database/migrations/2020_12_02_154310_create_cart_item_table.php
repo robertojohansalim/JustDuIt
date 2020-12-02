@@ -17,7 +17,7 @@ class CreateCartItemTable extends Migration
             $table->foreignId('cart_id')->constrained('cart');
             $table->foreignId('shoe_id')->constrained('shoe');
             $table->integer('quantity');
-
+            $table->timestamps();
             $table->primary(['cart_id','shoe_id']);
         });
     }
