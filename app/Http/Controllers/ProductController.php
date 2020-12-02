@@ -18,7 +18,7 @@ class ProductController extends Controller
     }
 
     public function add(Request $request){
-        $localPath = 'product_image';
+        $localPath = 'product_image/';
         $productName = $request->get('name');
         $productPrice = $request->get('price');
         $productDescription = $request->get('description');
