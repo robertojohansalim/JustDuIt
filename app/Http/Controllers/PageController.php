@@ -46,6 +46,10 @@ class PageController extends Controller
         return view("Pages/addToCart");
     }
 
+    public function updateCart($id){
+        return view("Pages/updateCart");
+    }
+
     public function cart(){
         return view('Pages/cart');
     }
