@@ -49,11 +49,7 @@ class CartController extends Controller
         }
         if($user->cart){
             $cart_id = $user->cart->id;
-            $item = new CartItem();
-            $item->shoe_id = $product_id;
-            $item->quantity = $quantity;
-            $item->cart_id = $cart_id;
-            return $item->save();
+            return CartItem::addItem($product_id, $quantity, $cart_id);
         }
         return null;
     }

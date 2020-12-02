@@ -16,12 +16,11 @@ class CartItem extends Model
         return $this->hasOne('App\Cart', 'id', 'cart_id');
     }
 
-    public static function addItem($cart, $id_role = 2){
-        $user = new User();
-        $user->username = $username;
-        $user->password = $password;
-        $user->email = $email;
-        $user->id_role = $id_role; 
-        return $user->save();
+    public static function addItem($product_id, $quantity, $cart_id){
+        $item = new CartItem();
+        $item->shoe_id = $product_id;
+        $item->quantity = $quantity;
+        $item->cart_id = $cart_id;
+        return $item->save();
     }
 }
