@@ -26,7 +26,10 @@
                     <input class="quantity" min="0" name="quantity" value="1" type="number" style="width: 50px; text-align: center">
                     <button class="plus"><i class="fas fa-plus"></i></button>
                 </div>
-                <button type="button" class="btn btn-primary" style="margin-top: 10px">Add to Cart</button>
+                <div class="row" style="margin-top: 25px">
+                    <button type="button" class="btn btn-primary" style="margin-left: 10px">Update Cart</button>
+                    <button type="button" class="btn btn-outline-primary text-primary" style="margin-left: 20px">Delete Cart</button>
+                </div>
             </div>
         </div>
     </div>

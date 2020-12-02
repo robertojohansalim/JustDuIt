@@ -6,8 +6,10 @@
 @endsection
 
 @section('content')
-<div class="container content-container">
-    <h1>Cart</h1>
+<div class="container content-container" style="margin-top: 10px">
+    <div class="title" style="margin-bottom: 35px">
+        <h2>View Cart</h2>
+    </div>
     <div class="row">
         @php
         $collection = [1,2,3]
@@ -16,14 +18,14 @@
             <div class="col-md-12 col-6 card-col">
                 <div class="item" style="display: flex">
                     <img class="card-img" style="width: 150px; height: 150px"
-                        src="{{ asset('image/Adidus_Superstar.jpg') }}">
+                        src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}">
                     <div class="card-body" style="margin-top: 40px">
                         <h6>Adidus Superstar Shoes</h6>
                     </div>
                     <div class="card-body" style="margin-top: 40px">
                         <p>Rp. 1000000</p>
                     </div>
-                    <a href="">
+                    <a href="{{ route('updateCart', ['id'=>1]) }}">
                         <button type="button" class="btn btn-primary" style="margin-top: 50px">Edit</button>
                     </a>
                 </div>
