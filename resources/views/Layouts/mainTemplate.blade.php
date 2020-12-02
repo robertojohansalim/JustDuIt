@@ -6,7 +6,7 @@
 @endsection
 
 @section('pageTemplate')
-
+{{-- Top Navigation --}}
 <nav class="navbar navbar-light bg-light page-navbar">
     <div class="top-nav-item navbar-brand">
         <a href="{{ route("dashboard") }}" style="text-decoration: none">Just Du It !</a>
@@ -37,21 +37,36 @@
     </div>
     @endif
 </nav>
-
+{{-- END of Top Navigation --}}
+{{-- Side Bar --}}
 <div class="wrapper container-fluid">
     <div class="row h-100">
         <div id="sidebar" class="col-md-3 col-lg-2 container-fluid">
             <div class="row sidebar-content">
                 <a href="{{ route('dashboard') }}"> View All Shoe </a>
             </div>
+            {{-- Authenticate Login --}}
             @if(auth()->user())
+            {{-- Member Login Sidebar --}}
+            @if(auth()->user()->role->role_name == "member")
             <div class="row sidebar-content">
                 <a href="{{ route('cart') }}"> View Cart </a>
             </div>
             <div class="row sidebar-content">
                 <a href="{{ route('transaction') }}"> View Transaction </a>
             </div>
-            @else
+            @endif
+            {{-- END of Member Login Sidebar --}}
+            {{-- Admin Login Sidebar --}}
+            @if(auth()->user()->role->role_name == "admin")
+            <div class="row sidebar-content">
+                <a href="{{ route('addProduct') }}">Add Shoe </a>
+            </div>
+            <div class="row sidebar-content">
+                <a href="{{ route('transaction') }}"> View All Transaction </a>
+            </div>
+            @endif
+            {{-- END of Admin Login Sidebar --}}
             @endif
         </div>
 
@@ -60,31 +75,10 @@
         </div>
     </div>
 
-    {{-- <div class="row">
-                <div class="col-md-2" id="sidebar">
-                    <div class="row">
-                        <div class="col-12">
-                            <h5 class="text-large"><a href=""> View All Shoe </a></h5>
-                            <hr>
-                        </div>
-                        <div class="col-12">
-                            <h5><a href=""> View Cart </a></h5>
-                            <hr>
-                        </div>
-                        <div class="col-12">
-                            <h5><a href=""> View Transaction </a></h5>
-                            <hr>
-                        </div>
-                    </div>
-                </div> --}}
-    {{-- <div class="col-md-10 content-wrapper"> --}}
-
-    {{-- </div> --}}
-    {{-- </div> --}}
 </div>
-
+{{-- END of Side Bar --}}
 @endsection
 
 @section('script')
-{{-- <script src="{{ asset('asset/js/script.js') }}"></script> --}}
+<script src="{{ asset('asset/js/script.js') }}"></script>
 @endsection

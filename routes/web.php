@@ -25,21 +25,22 @@ Route::get('/cart', 'PageController@cart')->name("cart");
 Route::get('/transaction', 'PageController@transaction')->name("transaction");
 Route::get('/updateCart/{id}', 'PageController@updateCart')->name("updateCart");
 
+//
 // Access Control
-Route::match(['post','get'],'/login','PageController@login')->name('login');
-// Route::get('/login','PageController@login')->name('login');
-// Route::post('/login','PageController@login');
+// Login
+Route::get('/login','PageController@login')->name('login');
+Route::post('/login','PageController@login');
 
+// Register
 Route::match(['post','get'],'/register','PageController@register')->name('register');
-// Route::get('/register','PageController@register')->name('register');
-// Route::post('/register','PageController@register');
 
+// Logout
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
-
+// Admin Access Pages
 // Add new Item
 Route::get('/addProduct', 'PageController@addProduct')->name('addProduct');
-Route::post('/addProduct', 'ProductController@add')->name('addProduct_post');
+Route::post('/addProduct', 'ProductController@add');
 
 // For Testing Perpose
 Route::any('/test', 'PageController@test')->name('test');
