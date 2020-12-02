@@ -18,7 +18,7 @@
             {{ $error }} <br>
         @endforeach --}}
 
-        <form class="p-5" action="{{ route('addProduct_post') }}" method="POST" enctype="multipart/form-data">
+        <form class="p-5" action="{{ route('addProduct') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}
             <div class="form-group row d-flex justify-content-center">
                 <label for="shoeNameForm" class="col-sm-3 col-form-label text-right">Shoe Name</label>
