@@ -36,5 +36,9 @@ Route::match(['post','get'],'/register','PageController@register')->name('regist
 Route::get('/logout', 'LoginController@logout')->name('logout');
 
 
+// Add new Item
+Route::get('/addProduct', 'PageController@addProduct')->name('addProduct');
+Route::post('/addProduct', 'ProductController@add')->name('addProduct_post');
+
 // For Testing Perpose
 Route::any('/test', 'PageController@test')->name('test');

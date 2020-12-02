@@ -54,6 +54,10 @@ class PageController extends Controller
         return view('Pages/transaction');
     }
 
+    public function addProduct(){
+        return view('Pages/addProduct');
+    }
+
     public function test(Request $request){
         if($request->isMethod("POST")){
             // cook
