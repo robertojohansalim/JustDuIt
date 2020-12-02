@@ -41,10 +41,10 @@
 <div class="wrapper container-fluid">
     <div class="row h-100">
         <div id="sidebar" class="col-md-3 col-lg-2 container-fluid">
-            @if(auth()->user())
             <div class="row sidebar-content">
                 <a href="{{ route('dashboard') }}"> View All Shoe </a>
             </div>
+            @if(auth()->user())
             <div class="row sidebar-content">
                 <a href="{{ route('cart') }}"> View Cart </a>
             </div>
@@ -52,9 +52,6 @@
                 <a href="{{ route('transaction') }}"> View Transaction </a>
             </div>
             @else
-            <div class="row sidebar-content">
-                <a href="{{ route('dashboard') }}"> View All Shoe </a>
-            </div>
             @endif
         </div>
 
