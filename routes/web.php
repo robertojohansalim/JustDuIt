@@ -56,6 +56,9 @@ Route::get('/transaction', 'PageController@transaction')->middleware('checkMembe
 // Add new Item
 Route::get('/addProduct', 'PageController@addProduct')->middleware('checkAdmin')->name('addProduct');
 Route::post('/addProduct', 'ProductController@add');
+// Update Item
+Route::get('/updateProduct/{id}', 'PageController@updateProduct')->middleware('checkMember')->name("updateProduct");
+Route::post('/updateProduct/{id}', 'CartController@update');
 
 // For Testing Perpose
 Route::any('/test', 'PageController@test')->name('test');
