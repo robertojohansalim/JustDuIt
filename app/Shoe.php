@@ -21,8 +21,8 @@ class Shoe extends Model
         return $shoe->save();
     }
 
-    public static function editShoe($shoe_id, $name, $description, $price, $image){
-        $shoe = Shoe::find($shoe_id);
+    public static function editShoe($id, $name, $description, $price, $image){
+        $shoe = Shoe::find($id);
         $shoe->name = $name;
         $shoe->description = $description;
         $shoe->price = $price;
