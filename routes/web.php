@@ -20,11 +20,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','PageController@dashboard')->name('dashboard');
 Route::get('/product/{id}', 'PageController@product')->name("product");
+
+//
+// Cart
+// View Cart
+Route::get('/cart', 'PageController@cart')->name("cart");
+// Add Item to Cart
 Route::get('/addCart/{id}', 'PageController@addToCart')->name("addToCart");
 Route::post('/addCart/{id}', 'CartController@addItem');
-Route::get('/cart', 'PageController@cart')->name("cart");
+// Update Item in Cart
+Route::get('/updateCart/{id}', 'PageController@updateCart')->name("updateCartItem");
+Route::post('/updateCart/{id}', 'CartController@updateItem');
+// Remove Item from Cart
+Route::post('/removeCart', 'CartController@removeItem')->name("removeCartItem");
+
+// View Transaction Page
 Route::get('/transaction', 'PageController@transaction')->name("transaction");
-Route::get('/updateCart/{id}', 'PageController@updateCart')->name("updateCart");
 
 //
 // Access Control

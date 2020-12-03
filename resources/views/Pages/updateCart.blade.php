@@ -21,20 +21,25 @@
                 <p>{{ $item->description }}</p>
                 <div class="qty">
                     <div class="form-group row d-flex justify-content" style="margin-top: 40px">
-                        <label for="qtyForm" class="col-sm-1 col-form-label text-left"
-                            style="margin-right: 40px">Quantity</label>
-                        <button class="minus"><i class="fas fa-minus"></i></button>
-                        <input class="quantity" min="0" name="quantity" value="{{ $quantity }}" type="number"
-                            style="width: 50px; text-align: center">
-                        <button class="plus"><i class="fas fa-plus"></i></button>
+                        <form action="">
+                            <label for="qtyForm" class="col-sm-1 col-form-label text-left"
+                                style="margin-right: 40px">Quantity</label>
+                            <button type="button" class="minus"><i class="fas fa-minus"></i></button>
+                            <input class="quantity" min="0" name="quantity" value="{{ $quantity }}" type="number"
+                                style="width: 50px; text-align: center">
+                            <button type="button" class="plus"><i class="fas fa-plus"></i></button>
+                        </form>
                     </div>
                     <div class="row" style="margin-top: 25px">
                         <button type="button" class="btn btn-primary" style="margin-left: 10px">Update Cart</button>
                         {{-- Delete Btn --}}
-                        <a href="#">
-                            <button type="button" class="btn btn-outline-warning" style="margin-left: 20px">Delete
-                                Cart</button>
-                        </a>
+                        <form action="{{ route('removeCartItem') }}" method="post">
+                            {{ csrf_field() }}
+                            <input type="hidden" name="cart_id" value="{{ $cart_id }}">
+                            <button type="submit" class="btn btn-outline-warning" style="margin-left: 20px">
+                                Delete Cart
+                            </button>
+                        </form>
                         {{-- END of Delete Btn --}}
                     </div>
                 </div>

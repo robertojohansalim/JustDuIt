@@ -46,6 +46,9 @@ class PageController extends Controller
 
     public function product($id){
         $shoe = Shoe::find($id);
+        if(!$shoe){
+            return abort(404);
+        }
         $data = [
             'shoe'=>$shoe
         ];
@@ -54,6 +57,9 @@ class PageController extends Controller
 
     public function addToCart($id){
         $shoe = Shoe::find($id);
+        if(!$shoe){
+            return abort(404);
+        }
         $data = [
             'shoe'=>$shoe
         ];
@@ -62,6 +68,9 @@ class PageController extends Controller
 
     public function updateCart($id){
         $item = CartItem::find($id);
+        if(!$item){
+            return abort(404);
+        }
         $data = [
             'cart_id' => $id,
             'item' => $item->shoe,
