@@ -17,7 +17,7 @@
                 <p>Rp. {{ number_format($shoe->price) }}</p>
                 <p>Description:<br>{{ $shoe->description }}</p>
                 @can ('isAdmin')
-                <a href="">
+                <a href="{{ route('updateProduct', ['id'=>$shoe->id]) }}">
                     <button type="button" class="btn btn-primary" style="margin-top: 20px">Update Shoe</button>
                 </a>
                 @endcan
