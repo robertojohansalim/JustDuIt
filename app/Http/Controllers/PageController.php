@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CartItem;
 use App\Shoe;
+use App\TransactionDetail;
 use App\TransactionHeader;
-use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -101,20 +101,45 @@ class PageController extends Controller
     }
 
     public function transaction(){
-        return view('Pages/transaction');
+        $data = [];
+        $headers = [];
+        if(Auth::user()->role->role_name == 'admin'){
+            $headers = TransactionHeader::all();
+        }
+        if(Auth::user()->role->role_name == 'member'){
+            // $headers = TransactionHeader::all()->where('id_user','=',Auth()->user()->id)->get();
+            $headers = TransactionHeader::where('id_user','=',Auth()->user()->id)->get();
+        }
+        // May Need to be moved to Queries for Pagination :(
+        $headers = $headers->map(function($transaction){
+            $sum = 0;
+            foreach($transaction->details as $detail){
+                $sum += $detail->price;
+            }
+            $transaction['total_price'] = $sum;
+            return $transaction;
+        });
+        $data = [
+            'transactions'=>$headers
+        ];
+        return view('Pages/transaction', $data);
     }
 
     public function addProduct(){
         return view('Pages/addProduct');
     }
 
+
+    // For Testing Perpose
     public function test(Request $request){
         if($request->isMethod("POST")){
             // cook
         }
         // CartController::insertIntoCart(1, 10);
         $header = TransactionHeader::makeTransactionHeader(Auth::user()->id, now());
-        dd($header);
+        $detail = TransactionDetail::makeTransactionDetail($header->id, 1, 'test.jpg', 2000, 10);
+        dump($header);
+        dd($detail);
         $data = [
             'header' =>$header
         ];

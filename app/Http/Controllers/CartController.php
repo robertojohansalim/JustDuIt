@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    public static function createItem($product_id, $quantity, $user_id = null){
+    public function createItem($product_id, $quantity, $user_id = null){
         $user = null;
         if(!$user_id){
             $user = Auth::user();
@@ -29,7 +29,7 @@ class CartController extends Controller
         return CartItem::createItem($product_id, $quantity, $cart_id);
     }
 
-    public static function clearCart($cart_id){
+    public function clearCart($cart_id){
         $cart = Cart::find($cart_id);
         $items = $cart->items;
         foreach($items as $item){
@@ -46,7 +46,7 @@ class CartController extends Controller
         }
         $product_id = $request->get('product_id');
         $quantity = $request->get('quantity');
-        CartController::createItem($product_id,$quantity, $user->id);
+        $this->createItem($product_id,$quantity, $user->id);
         return redirect()->route('cart');
     }
 
@@ -75,5 +75,9 @@ class CartController extends Controller
 
     public function checkout(Request $request){
         $cart = Auth::user()->cart;
+        $header = TransactionController::makeTransaction($cart->items);
+        // Clearing Cart
+        $this->clearCart($cart->id);
+        return redirect()->route('transaction');
     }
 }
