@@ -14,6 +14,14 @@ class TransactionHeader extends Model
 
     public $timestamps = false;
 
+    public function user(){
+        return $this->hasOne('App\User','id','id_user');
+    }
+
+    public function details(){
+        return $this->hasMany('App\TransactionDetail','id_transaction_header','id');
+    }
+
     public static function makeTransactionHeader($user_id, $date){
         $header = new TransactionHeader();
         $header->id_user = $user_id;

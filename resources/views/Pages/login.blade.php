@@ -24,7 +24,8 @@
                 <label for="colFormLabel" class="col-sm-3 col-form-label text-right">E-mail Address</label>
                 <div class="col-sm-6">
                     <input type="email" class="form-control" id="colFormLabel" placeholder="email" name="email"
-                        value="{{ (!old('email') || !Cookie::get('email')) ? Cookie::get('email') : old('email')  }}">
+                        value="{{ (!old('email') || !Cookie::get('email')) ? Cookie::get('email') : old('email')  }}"
+                        autofocus>
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-center">

@@ -15,19 +15,20 @@
         $collection = [1,2,3];
         $collection2 = [1,2,3,4,5,6]
         @endphp
-        @foreach ($collection as $item)
-            <div class="col-md-12 col-6 card-col">
-                <div class="item" style="margin-bottom: 35px">
-                    <div class="center" style="background-color: #699eee; width: 500px; margin-bottom: 20px; margin-top: 10px">
-                        <p>2020-12-01 12:00:00</p>
-                        <h5>Total Rp. 2000000</h5>
-                    </div>
-                    @foreach ($collection2 as $item)
-                        <img class="card-img" style="width: 200px; height: 150px; margin-bottom: 10px;"
-                            src="{{ asset('product_image/Adidus_Super_Star.jpeg') }}">
-                    @endforeach
+        @foreach ($transactions as $transaction)
+        <div class="col-md-12 col-6 card-col">
+            <div class="item" style="margin-bottom: 35px">
+                <div class="center"
+                    style="background-color: #699eee; width: 500px; margin-bottom: 20px; margin-top: 10px">
+                    <p>{{ $transaction->date }}</p>
+                    <h5>Total Rp. {{ number_format($transaction->total_price) }}</h5>
                 </div>
+                @foreach ($transaction->details as $detail)
+                <img class="card-img" style="width: 200px; height: 150px; margin-bottom: 10px;"
+                    src="{{ asset('product_image/'.$detail->image) }}">
+                @endforeach
             </div>
+        </div>
         @endforeach
     </div>
 </div>
