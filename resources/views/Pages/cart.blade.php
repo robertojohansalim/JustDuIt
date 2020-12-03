@@ -22,7 +22,7 @@
                 <div class="card-body" style="margin-top: 40px">
                     <p>Rp. {{ number_format($item->shoe->price) }}</p>
                 </div>
-                <a href="{{ route('updateCart', ['id'=>$item->id]) }}">
+                <a href="{{ route('updateCartItem', ['id'=>$item->id]) }}">
                     <button type="button" class="btn btn-primary" style="margin-top: 50px">Edit</button>
                 </a>
             </div>

@@ -16,17 +16,16 @@
             <h2>{{ $shoe->name }}</h5>
                 <p>Rp. {{ number_format($shoe->price) }}</p>
                 <p>Description:<br>{{ $shoe->description }}</p>
-                @if (auth()->user())
-                @if (auth()->user()->role->role_name == 'admin')
+                @can ('isAdmin')
                 <a href="">
                     <button type="button" class="btn btn-primary" style="margin-top: 20px">Update Shoe</button>
                 </a>
-                @else
+                @endcan
+                @can('isMember')
                 <a href="{{ route('addToCart', ['id'=>$shoe->id]) }}">
                     <button type="button" class="btn btn-primary" style="margin-top: 20px">Add to Cart</button>
                 </a>
-                @endif
-                @endif
+                @endcan
         </div>
     </div>
 </div>

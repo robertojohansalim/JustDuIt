@@ -91,4 +91,8 @@ class CartController extends Controller
         CartController::updateOrinsertIntoCart($product_id,$quantity, $user->id);
         return redirect()->route('cart');
     }
+
+    public function updateItem(Request $request){
+        dd($request);
+    }
 }

@@ -34,6 +34,7 @@ Route::post('/updateCart/{id}', 'CartController@updateItem');
 // Remove Item from Cart
 Route::post('/removeCart', 'CartController@removeItem')->name("removeCartItem");
 
+//
 // View Transaction Page
 Route::get('/transaction', 'PageController@transaction')->name("transaction");
 

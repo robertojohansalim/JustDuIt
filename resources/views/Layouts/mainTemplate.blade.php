@@ -46,28 +46,27 @@
                 <a href="{{ route('dashboard') }}"> View All Shoe </a>
             </div>
             {{-- Authenticate Login --}}
-            @if(auth()->user())
             {{-- Member Login Sidebar --}}
-            @if(auth()->user()->role->role_name == "member")
+            @can('isMember')
             <div class="row sidebar-content">
                 <a href="{{ route('cart') }}"> View Cart </a>
             </div>
             <div class="row sidebar-content">
                 <a href="{{ route('transaction') }}"> View Transaction </a>
             </div>
-            @endif
+            @endcan
             {{-- END of Member Login Sidebar --}}
             {{-- Admin Login Sidebar --}}
-            @if(auth()->user()->role->role_name == "admin")
+            {{-- @if(auth()->user()->role->role_name == "admin") --}}
+            @can('isAdmin')
             <div class="row sidebar-content">
                 <a href="{{ route('addProduct') }}">Add Shoe </a>
             </div>
             <div class="row sidebar-content">
                 <a href="{{ route('transaction') }}"> View All Transaction </a>
             </div>
-            @endif
+            @endcan
             {{-- END of Admin Login Sidebar --}}
-            @endif
         </div>
 
         <div class="col-md-9 col-lg-10">
