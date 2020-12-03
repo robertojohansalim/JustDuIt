@@ -14,9 +14,9 @@
             <h1 class="login-header text-center bg-primary text-white py-2">Add Shoe</h1>
         </div>
 
-        {{-- @foreach ($errors->all() as $error)
-            {{ $error }} <br>
-        @endforeach --}}
+        @foreach ($errors->all() as $error)
+        {{ $error }} <br>
+        @endforeach
 
         <form class="p-5" action="{{ route('addProduct') }}" method="POST" enctype="multipart/form-data">
             {{ csrf_field() }}

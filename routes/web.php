@@ -44,6 +44,9 @@ Route::get('/updateCart/{id}', 'PageController@updateCart')->middleware('checkMe
 Route::post('/updateCart/{id}', 'CartController@updateItem');
 // Remove Item from Cart
 Route::post('/removeCart', 'CartController@removeItem')->middleware('checkMember')->name("removeCartItem");
+
+// Checkout
+Route::post('/checkout', 'CartController@checkout')->name('checkoutCart');
 // END of Cart
 //
 // View Transaction Page

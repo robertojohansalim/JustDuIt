@@ -40,4 +40,5 @@ class CartItem extends Model
         $item = CartItem::find($item_id);
         return $item->delete();
     }
+
 }

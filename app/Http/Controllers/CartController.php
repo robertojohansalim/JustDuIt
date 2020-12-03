@@ -102,5 +102,8 @@ class CartController extends Controller
         return redirect()->route('cart');
     }
 
-    
+    public function checkout(Request $request){
+        $cart = Auth::user()->cart;
+        
+    }
 }

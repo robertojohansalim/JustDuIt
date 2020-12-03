@@ -80,8 +80,10 @@ class PageController extends Controller
     }
 
     public function cart(){
+        $cart = Auth()->user()->cart;
         $data = [
-            'cart_items' => Auth()->user()->cart->items
+            'cart' => $cart,
+            'cart_items' => $cart->items,
         ];
         return view('Pages/cart', $data);
     }
