@@ -50,7 +50,7 @@ Route::post('/checkout', 'CartController@checkout')->name('checkoutCart');
 // END of Cart
 //
 // View Transaction Page
-Route::get('/transaction', 'PageController@transaction')->middleware('checkMember')->name("transaction");
+Route::get('/transaction', 'PageController@transaction')->middleware('checkLogin')->name("transaction");
 
 // Admin Access Pages
 // Add new Item
