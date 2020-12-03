@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\CartItem;
 use App\Shoe;
+use App\TransactionHeader;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -112,6 +113,11 @@ class PageController extends Controller
             // cook
         }
         // CartController::insertIntoCart(1, 10);
-        return view('test');
+        $header = TransactionHeader::makeTransactionHeader(Auth::user()->id, now());
+        dd($header);
+        $data = [
+            'header' =>$header
+        ];
+        return view('test', $data);
     }
 }

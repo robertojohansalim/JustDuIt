@@ -10,35 +10,6 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
-    // public static function getCart($user_id = null){
-    //     $user = null;
-    //     if(!$user_id){
-    //         $user = Auth::user();
-    //     }
-    //     else{
-    //         $user = User::find($user_id);
-    //     }
-    //     return $user->cart;
-    // }
-
-    // public static function getCartItems($user_id = null){
-    //     $user = null;
-    //     if(!$user_id){
-    //         $user = Auth::user();
-    //     }
-    //     else{
-    //         $user = User::find($user_id);
-    //     }
-    //     if($user->cart){
-    //         return $user->cart->items;
-    //     }
-    //     return null;
-    // }
-
-    // public static function makeCart($user_id = null){
-    //     return Cart::makeCart($user_id ? $user_id : Auth::user()->id);
-    // }
-
     public static function createItem($product_id, $quantity, $user_id = null){
         $user = null;
         if(!$user_id){
@@ -104,6 +75,5 @@ class CartController extends Controller
 
     public function checkout(Request $request){
         $cart = Auth::user()->cart;
-        
     }
 }
