@@ -19,7 +19,6 @@ class ProductController extends Controller
     }
 
     public function add(Request $request){
-        dump($request->get('price'));
         $validator = ProductController::makeValidator($request);
         if($validator->fails()){
             // redirect back to addProduct Page if fails

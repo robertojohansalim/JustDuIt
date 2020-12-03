@@ -21,21 +21,25 @@
             <p>{{ $item->description }}</p>
             <div class="qty">
                 <div class="form-group row d-flex justify-content" style="margin-top: 40px">
+                    {{-- Form for Update --}}
                     <form action="{{ route('updateCartItem',['id'=>$cart_id]) }}" method="post">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="cart_item_id" value="{{ $cart_id }}">
                         <label for="qtyForm" class="col-sm-1 col-form-label text-left"
                             style="margin-right: 40px">Quantity</label>
                         <button type="button" class="minus"><i class="fas fa-minus"></i></button>
                         <input class="quantity" min="0" name="quantity" value="{{ $quantity }}" type="number"
                             style="width: 50px; text-align: center">
                         <button type="button" class="plus"><i class="fas fa-plus"></i></button>
-                    </form>
                 </div>
                 <div class="row" style="margin-top: 25px">
-                    <button type="button" class="btn btn-primary" style="margin-left: 10px">Update Cart</button>
+                    <button type="submit" class="btn btn-primary" style="margin-left: 10px">Update Cart</button>
+                    </form>
+                    {{-- END of Form for Update --}}
                     {{-- Delete Btn --}}
                     <form action="{{ route('removeCartItem') }}" method="post">
                         {{ csrf_field() }}
-                        <input type="hidden" name="cart_id" value="{{ $cart_id }}">
+                        <input type="hidden" name="cart_item_id" value="{{ $cart_id }}">
                         <button type="submit" class="btn btn-outline-warning" style="margin-left: 20px">
                             Delete Cart
                         </button>

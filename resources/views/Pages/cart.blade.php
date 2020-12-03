@@ -30,9 +30,11 @@
         @endforeach
     </div>
 
-    <a href="">
-        <button type="button" class="btn btn-primary">Check Out</button>
-    </a>
+    <form action="{{ route('checkoutCart') }}" method="post">
+        {{ csrf_field() }}
+        <input type="hidden" name="cart_id" value="{{ $cart->id }}">
+        <button type="submit" class="btn btn-primary">Check Out</button>
+    </form>
 </div>
 
 
