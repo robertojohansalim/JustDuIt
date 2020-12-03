@@ -47,7 +47,7 @@ class ProductController extends Controller
             // redirect back to addProduct Page if fails
             return redirect()->route('updateProduct', ['id'=>$request->id])->withInput()->withErrors($validator);
         }
-        $productId = $request->get('id');
+        $productId = $request->id;
         $productName = $request->get('name');
         $productPrice = $request->get('price');
         $productDescription = $request->get('description');
