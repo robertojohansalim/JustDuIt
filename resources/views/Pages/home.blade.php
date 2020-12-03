@@ -17,7 +17,7 @@
                 <img class="card-img" src="{{ asset('product_image/' . $shoe->image) }}">
                 <div class="card-body">
                     <h5>{{ $shoe->name }}</h5>
-                    <p>Rp. {{ $shoe->price }}</p>
+                    <p>Rp. {{ number_format($shoe->price) }}</p>
                 </div>
             </a>
         </div>

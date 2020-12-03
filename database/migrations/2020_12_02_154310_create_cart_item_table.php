@@ -14,11 +14,12 @@ class CreateCartItemTable extends Migration
     public function up()
     {
         Schema::create('cart_item', function (Blueprint $table) {
+            $table->id();
             $table->foreignId('cart_id')->constrained('cart');
             $table->foreignId('shoe_id')->constrained('shoe');
+            // $table->primary(['cart_id','shoe_id']);
             $table->integer('quantity');
             $table->timestamps();
-            $table->primary(['cart_id','shoe_id']);
         });
     }
 

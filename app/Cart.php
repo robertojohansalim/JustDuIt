@@ -25,6 +25,7 @@ class Cart extends Model
     public static function makeCart($user_id){
         $cart = new Cart();
         $cart->user_id = $user_id;
-        return $cart->save();
+        $cart->save();
+        return $cart;
     }
 }

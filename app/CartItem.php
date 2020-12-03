@@ -8,6 +8,10 @@ class CartItem extends Model
 {
     protected $table = 'cart_item';
 
+    // protected $primaryKey = ['cart_id', 'shoe_id'];
+    
+    // public $incrementing = false;
+
     protected $fillable = [
         'cart_id', 'shoe_id', 'quantity',
     ];
@@ -17,10 +21,7 @@ class CartItem extends Model
     }
 
     public static function addItem($product_id, $quantity, $cart_id){
-        $item = new CartItem();
-        $item->shoe_id = $product_id;
-        $item->quantity = $quantity;
-        $item->cart_id = $cart_id;
-        return $item->save();
+        $item = CartItem::updateOrCreate(['shoe_id'=>$product_id, 'cart_id'=>$cart_id],['quantity'=>$quantity]);
+        return $item;
     }
 }

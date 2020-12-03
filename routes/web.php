@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PageController@dashboard')->name('dashboard');
 Route::get('/product/{id}', 'PageController@product')->name("product");
 Route::get('/addCart/{id}', 'PageController@addToCart')->name("addToCart");
+Route::post('/addCart/{id}', 'CartController@addItem');
 Route::get('/cart', 'PageController@cart')->name("cart");
 Route::get('/transaction', 'PageController@transaction')->name("transaction");
 Route::get('/updateCart/{id}', 'PageController@updateCart')->name("updateCart");

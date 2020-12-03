@@ -52,7 +52,11 @@ class PageController extends Controller
     }
 
     public function addToCart($id){
-        return view("Pages/addToCart");
+        $shoe = Shoe::find($id);
+        $data = [
+            'shoe'=>$shoe
+        ];
+        return view("Pages/addToCart", $data);
     }
 
     public function updateCart($id){

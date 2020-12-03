@@ -44,19 +44,29 @@ class CartController extends Controller
         if(!$user_id){
             $user = Auth::user();
         }
-        else{
+        else if($user_id != null){
             $user = User::find($user_id);
         }
-        if($user->cart){
-            $cart_id = $user->cart->id;
-            return CartItem::addItem($product_id, $quantity, $cart_id);
+        else{
+            return null;
         }
-        return null;
+        $cart = $user->cart;
+        if($cart == null){
+            $cart = CartController::makeCart($user->id);
+        }
+        $cart_id = $cart->id;
+        return CartItem::addItem($product_id, $quantity, $cart_id);
     }
 
     // Post Request Handler
-    public function addItemIntoCart($product_id,$quantity, $user_id = null){
-        CartController::insertIntoCart($product_id,$quantity, $user_id);
+    public function addItem(Request $request){
+        $user = Auth::user();
+        if(!$user){
+            return redirect()->route('login');
+        }
+        $product_id = $request->get('product_id');
+        $quantity = $request->get('quantity');
+        CartController::insertIntoCart($product_id,$quantity, $user->id);
         return redirect()->route('cart');
     }
 }

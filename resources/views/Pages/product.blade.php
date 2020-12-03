@@ -14,7 +14,7 @@
         </div>
         <div class="col-8">
             <h2>{{ $shoe->name }}</h5>
-                <p>Rp. {{ $shoe->price }}</p>
+                <p>Rp. {{ number_format($shoe->price) }}</p>
                 <p>Description:<br>{{ $shoe->description }}</p>
                 @if (auth()->user())
                 @if (auth()->user()->role->role_name == 'admin')
