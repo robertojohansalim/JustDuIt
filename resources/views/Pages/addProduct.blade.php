@@ -35,8 +35,8 @@
             <div class="form-group row d-flex justify-content-center">
                 <label for="descriptionForm" class="col-sm-3 col-form-label text-right">Description</label>
                 <div class="col-sm-6">
-                    <textarea class="form-control" id="descriptionForm" placeholder="description" name="description">
-                    </textarea>
+                    <textarea class="form-control" id="descriptionForm" placeholder="description"
+                        name="description"></textarea>
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-center">
