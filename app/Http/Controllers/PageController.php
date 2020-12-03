@@ -79,6 +79,17 @@ class PageController extends Controller
         return view("Pages/updateCart", $data);
     }
 
+    public function updateProduct($id){
+        $shoe = Shoe::find($id);
+        if(!$shoe){
+            return abort(404);
+        }
+        $data = [
+            'shoe'=>$shoe
+        ];
+        return view("Pages/updateProduct", $data);
+    }
+
     public function cart(){
         $cart = Auth()->user()->cart;
         $data = [
@@ -100,7 +111,7 @@ class PageController extends Controller
         if($request->isMethod("POST")){
             // cook
         }
-        // CartController::insertIntoCart(1, 10);    
+        // CartController::insertIntoCart(1, 10);
         return view('test');
     }
 }

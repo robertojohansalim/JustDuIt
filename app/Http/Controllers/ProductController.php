@@ -28,14 +28,38 @@ class ProductController extends Controller
         $productPrice = $request->get('price');
         $productDescription = $request->get('description');
         $productImage = $request->file('image');
-        
+
         // Storing Image at Location
         $localPath = 'product_image/';
         $proudctImageName = join("_",explode(" ",$productName)) . '.' . $productImage->extension();
         $productImage->storeAs($localPath, $proudctImageName);
 
-        // Image Add 
+        // Image Add
         $shoe = Shoe::addShoe($productName, $productDescription, $productPrice, $proudctImageName);
+
+        // Redirect to Dashboard if Succeed
+        return redirect()->route('dashboard');
+    }
+
+    public function update(Request $request){
+        $validator = ProductController::makeValidator($request);
+        if($validator->fails()){
+            // redirect back to addProduct Page if fails
+            return redirect()->route('updateProduct', ['id'=>$request->id])->withInput()->withErrors($validator);
+        }
+        $productId = $request->get('id');
+        $productName = $request->get('name');
+        $productPrice = $request->get('price');
+        $productDescription = $request->get('description');
+        $productImage = $request->file('image');
+
+        // Storing Image at Location
+        $localPath = 'product_image/';
+        $proudctImageName = join("_",explode(" ",$productName)) . '.' . $productImage->extension();
+        $productImage->storeAs($localPath, $proudctImageName);
+
+        // Image Update
+        $shoe = Shoe::editShoe($productId, $productName, $productDescription, $productPrice, $proudctImageName);
 
         // Redirect to Dashboard if Succeed
         return redirect()->route('dashboard');
