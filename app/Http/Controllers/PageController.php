@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CartItem;
 use App\Shoe;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
@@ -60,11 +61,20 @@ class PageController extends Controller
     }
 
     public function updateCart($id){
-        return view("Pages/updateCart");
+        $item = CartItem::find($id);
+        $data = [
+            'cart_id' => $id,
+            'item' => $item->shoe,
+            'quantity' => $item->quantity
+        ];
+        return view("Pages/updateCart", $data);
     }
 
     public function cart(){
-        return view('Pages/cart');
+        $data = [
+            'cart_items' => Auth()->user()->cart->items
+        ];
+        return view('Pages/cart', $data);
     }
 
     public function transaction(){

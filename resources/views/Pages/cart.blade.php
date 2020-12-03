@@ -11,7 +11,7 @@
         <h2>View Cart</h2>
     </div>
     <div class="row">
-        @foreach (auth()->user()->cart->items as $item)
+        @foreach ($cart_items as $item)
         <div class="col-md-12 col-6 card-col">
             <div class="item" style="display: flex">
                 <img class="card-img" style="width: 150px; height: 150px"
