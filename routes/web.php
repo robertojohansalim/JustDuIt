@@ -21,22 +21,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PageController@dashboard')->name('dashboard');
 Route::get('/product/{id}', 'PageController@product')->name("product");
 
-// Cart
-// View Cart
-Route::get('/cart', 'PageController@cart')->name("cart");
-// Add Item to Cart
-Route::get('/addCart/{id}', 'PageController@addToCart')->middleware('checkMember')->name("addToCart");
-Route::post('/addCart/{id}', 'CartController@addItem');
-// Update Item in Cart
-Route::get('/updateCart/{id}', 'PageController@updateCart')->middleware('checkMember')->name("updateCartItem");
-Route::post('/updateCart/{id}', 'CartController@updateItem');
-// Remove Item from Cart
-Route::post('/removeCart', 'CartController@removeItem')->middleware('checkMember')->name("removeCartItem");
-
-//
-// View Transaction Page
-Route::get('/transaction', 'PageController@transaction')->middleware('checkMember')->name("transaction");
-
 // Access Control
 // Login
 Route::get('/login','PageController@login')->name('login');
@@ -48,6 +32,22 @@ Route::post('/register','PageController@register');
 
 // Logout
 Route::get('/logout', 'LoginController@logout')->name('logout');
+
+// Cart
+// View Cart
+Route::get('/cart', 'PageController@cart')->name("cart");
+// Add Item to Cart
+Route::get('/addCart/{id}', 'PageController@addToCart')->middleware('checkMember')->name("addToCart");
+Route::post('/addCart/{id}', 'CartController@addItem');
+// Update Item in Cart
+Route::get('/updateCart/{id}', 'PageController@updateCart')->middleware('checkMember')->name("updateCartItem");
+Route::post('/updateCart/{id}', 'CartController@updateItem');
+// Remove Item from Cart
+Route::post('/removeCart', 'CartController@removeItem')->middleware('checkMember')->name("removeCartItem");
+// END of Cart
+//
+// View Transaction Page
+Route::get('/transaction', 'PageController@transaction')->middleware('checkMember')->name("transaction");
 
 // Admin Access Pages
 // Add new Item

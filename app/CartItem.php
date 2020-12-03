@@ -24,8 +24,15 @@ class CartItem extends Model
         return $this->hasOne('App\Shoe','id', 'shoe_id');
     }
 
-    public static function updateOrCreateItem($product_id, $quantity, $cart_id){
+    public static function createItem($product_id, $quantity, $cart_id){
         $item = CartItem::updateOrCreate(['shoe_id'=>$product_id, 'cart_id'=>$cart_id],['quantity'=>$quantity]);
+        return $item;
+    }
+
+    public static function editItem($cart_item_id, $quantity){
+        $item = CartItem::find($cart_item_id);
+        $item->quantity = $quantity;
+        $item->save();
         return $item;
     }
 

@@ -39,7 +39,7 @@ class CartController extends Controller
     //     return Cart::makeCart($user_id ? $user_id : Auth::user()->id);
     // }
 
-    public static function updateOrinsertIntoCart($product_id, $quantity, $user_id = null){
+    public static function createItem($product_id, $quantity, $user_id = null){
         $user = null;
         if(!$user_id){
             $user = Auth::user();
@@ -55,7 +55,16 @@ class CartController extends Controller
             $cart = Cart::makeCart($user->id);
         }
         $cart_id = $cart->id;
-        return CartItem::updateOrCreateItem($product_id, $quantity, $cart_id);
+        return CartItem::createItem($product_id, $quantity, $cart_id);
+    }
+
+    public static function clearCart($cart_id){
+        $cart = Cart::find($cart_id);
+        $items = $cart->items;
+        foreach($items as $item){
+            CartItem::removeItem($item->id);
+        }
+        return true;
     }
 
     // Post Request Handler
@@ -66,7 +75,7 @@ class CartController extends Controller
         }
         $product_id = $request->get('product_id');
         $quantity = $request->get('quantity');
-        CartController::updateOrinsertIntoCart($product_id,$quantity, $user->id);
+        CartController::createItem($product_id,$quantity, $user->id);
         return redirect()->route('cart');
     }
 
@@ -75,24 +84,23 @@ class CartController extends Controller
         if(!$user){
             return redirect()->route('login');
         }
-        $cart_id = $request->get('cart_id');
-        CartItem::removeItem($cart_id);
+        $cart_item_id = $request->get('cart_item_id');
+        CartItem::removeItem($cart_item_id);
 
-        return redirect()->route('cart');
-    }
-
-    public function editItem(Request $request){
-        $user = Auth::user();
-        if(!$user){
-            return redirect()->route('login');
-        }
-        $product_id = $request->get('product_id');
-        $quantity = $request->get('quantity');
-        CartController::updateOrinsertIntoCart($product_id,$quantity, $user->id);
         return redirect()->route('cart');
     }
 
     public function updateItem(Request $request){
-        dd($request);
+        $user = Auth::user();
+        if(!$user){
+            return redirect()->route('login');
+        }
+        $cart_item_id = $request->get('cart_item_id');
+        $quantity = $request->get('quantity');
+        // CartController::updateOrinsertIntoCart($product_id,$quantity, $user->id);
+        CartItem::editItem($cart_item_id, $quantity);
+        return redirect()->route('cart');
     }
+
+    
 }
