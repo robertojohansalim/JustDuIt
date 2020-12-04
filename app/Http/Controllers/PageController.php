@@ -19,29 +19,12 @@ class PageController extends Controller
         return view('Pages/home', $data);
     }
 
-    public function login(Request $request)
+    public function login()
     {
-        if($request->isMethod("POST")){
-            if(LoginController::authenticate($request)){
-                return redirect()->intended(url()->route('dashboard'));
-            }
-            return back()->withInput()->withErrors(['msg'=>'login fail, check your email or password']);
-        }
         return view('Pages/login');
     }
 
-    public function register(Request $request){
-        if($request->isMethod("POST")){
-            // Validating Input
-            $errors = RegisterController::register($request);
-            if(!$errors){
-                // Accepted
-                return redirect()->route('dashboard');
-            }
-            else{
-                redirect()->route('register')->withInput()->withErrors($errors);
-            }
-        }
+    public function register(){
         return view('Pages/register');
     }
 
