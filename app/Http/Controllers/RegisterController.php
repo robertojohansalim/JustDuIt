@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -28,9 +29,9 @@ class RegisterController extends Controller
         }
 
         // Store Data
-        $user = User::addUser(
-            $request->get('username'), 
-            bcrypt($request->get('password')), 
+        $user = User::addAndAuthenticateUser(
+            $request->get('username'),
+            bcrypt($request->get('password')),
             $request->get('email')
         );
         // return !LoginController::authenticate($request);
