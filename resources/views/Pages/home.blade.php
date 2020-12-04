@@ -34,7 +34,13 @@
         {{-- Item Display END --}}
         @endforeach
     </div>
+<<<<<<< HEAD
     {{ $allShoe->withQueryString()->links() }}
+=======
+    <div class="row d-flex justify-content-center" style="margin-top: 15px">
+        {{ $allShoe->links() }}
+    </div>
+>>>>>>> b8225323fa75df4d5e2b93d143b97c44502347c0
 </div>
 
 
