@@ -23,7 +23,7 @@
     @endif --}}
     {{ csrf_field() }}
     <div class="form-group row d-flex justify-content-center">
-        <label for="emailForm" class="col-sm-3 col-form-label text-right">email</label>
+        <label for="usernameForm" class="col-sm-3 col-form-label text-right">Username</label>
         <div class="col-sm-6">
             <input type="text" class="form-control {{ $errors->has('username') ?"is-invalid" : ""}}" id="usernameForm"
                 placeholder="username" name="username" value="{{ old('username') }}">
