@@ -24,11 +24,13 @@ Route::get('/product/{id}', 'PageController@product')->name("product");
 // Access Control
 // Login
 Route::get('/login','PageController@login')->name('login');
-Route::post('/login','PageController@login');
+// Route::post('/login','PageController@login');
+Route::post('/login','LoginController@login');
 
 // Register
 Route::get('/register','PageController@register')->name('register');
-Route::post('/register','PageController@register');
+// Route::post('/register','PageController@register');
+Route::post('/register','RegisterController@register');
 
 // Logout
 Route::get('/logout', 'LoginController@logout')->name('logout');

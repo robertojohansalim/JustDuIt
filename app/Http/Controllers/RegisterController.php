@@ -18,18 +18,13 @@ class RegisterController extends Controller
         return $validator;
     }
 
-    public static function validateRegister(Request $request){
-        $validator = RegisterController::makeValidator($request);
-        return !$validator->fails();
-    }
-
-    public static function register(Request $request){
+    public function register(Request $request){
         // Validate
-        $validator = RegisterController::makeValidator($request);
+        $validator = $this->makeValidator($request);
         // dd($validator);
         if($validator->fails()){
             // Returning "Error"
-            return $validator;
+            return redirect()->route('register')->withInput()->withErrors($validator);
         }
 
         // Store Data
@@ -38,6 +33,7 @@ class RegisterController extends Controller
             bcrypt($request->get('password')), 
             $request->get('email')
         );
-        return !LoginController::authenticate($request);
+        // return !LoginController::authenticate($request);
+        return redirect()->route('dashboard');
     }
 }

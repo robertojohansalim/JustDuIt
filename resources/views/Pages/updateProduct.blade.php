@@ -29,22 +29,37 @@
         <div class="form-group row">
             <label for="shoeNameForm" class="col-sm-3 col-form-label text-right">Shoe Name</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="shoeNameForm" placeholder="Shoe Name" name="name"
-                    value="{{ $shoe->name }}">
+                <input type="text" class="form-control {{ $errors->has('name') ?"is-invalid" : ""}}" id="shoeNameForm"
+                    placeholder="Shoe Name" name="name" value="{{ $shoe->name }}">
+                @error('name')
+                <div class="small text-danger">
+                    {{ $errors->first('name') }}
+                </div>
+                @enderror
             </div>
         </div>
         <div class="form-group row">
             <label for="priceForm" class="col-sm-3 col-form-label text-right">Price</label>
             <div class="col-sm-6">
-                <input type="number" class="form-control" id="priceForm" placeholder="price" name="price"
-                    value="{{ $shoe->price }}">
+                <input type="number" class="form-control {{ $errors->has('price') ?"is-invalid" : ""}}" id="priceForm"
+                    placeholder="price" name="price" value="{{ $shoe->price }}">
+                @error('name')
+                <div class="small text-danger">
+                    {{ $errors->first('name') }}
+                </div>
+                @enderror
             </div>
         </div>
         <div class="form-group row">
             <label for="descriptionForm" class="col-sm-3 col-form-label text-right">Description</label>
             <div class="col-sm-6">
-                <textarea class="form-control" id="descriptionForm" placeholder="description"
-                    name="description">{{ $shoe->description }}</textarea>
+                <textarea class="form-control {{ $errors->has('description') ?"is-invalid" : ""}}" id="descriptionForm"
+                    placeholder="description" name="description">{{ $shoe->description }}</textarea>
+                @error('description')
+                <div class="small text-danger">
+                    {{ $errors->first('description') }}
+                </div>
+                @enderror
             </div>
         </div>
         <div class="form-group row">

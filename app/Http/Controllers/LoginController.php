@@ -8,22 +8,23 @@ use Illuminate\Support\Facades\Cookie;
 
 class LoginController extends Controller
 {
-    // Handle Authentication Attept
-    public static function authenticate(Request $request){
+    public function login(Request $request){
         $credential = $request->only('email', 'password');
-        // Get remember variable
         $remember = ($request->get('remember') != null) ? true : false;
         if($remember){
             // Save Email & Password
             Cookie::queue('email', $credential['email'], 120);
             Cookie::queue('password', $credential['password'], 120);
         }
-        // Log User In with remember me
-        return Auth::attempt($credential, $remember);
-    }
+        if(Auth::attempt($credential, $remember)){
+            return redirect()->route('dashboard');
+        }
+        else{
+            return redirect()->route('login')->withInput()->withErrors(['msg'=>'login fail, check your email or password']);
+        }
+    } 
 
-    public static function logout(){
-        // Auth::login
+    public function logout(){
         Auth::logout();
         return redirect()->route('dashboard');
     }
