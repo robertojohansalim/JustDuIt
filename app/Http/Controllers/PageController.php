@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 class PageController extends Controller
 {
     public function dashboard(){
-        $allShoe = Shoe::all();
+        $allShoe = Shoe::paginate(6);
         $data = [
             "allShoe" => $allShoe
         ];
