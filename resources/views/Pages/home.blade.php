@@ -34,6 +34,9 @@
         {{-- Item Display END --}}
         @endforeach
     </div>
+    <div class="row d-flex justify-content-center" style="margin-top: 15px">
+        {{ $allShoe->links() }}
+    </div>
 </div>
 
 
