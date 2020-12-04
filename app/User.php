@@ -52,6 +52,7 @@ class User extends Authenticatable
         $user->password = $password;
         $user->email = $email;
         $user->id_role = $id_role; 
-        return $user->save();
+        $user->save();
+        return $user;
     }
 }

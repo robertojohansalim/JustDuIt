@@ -36,6 +36,7 @@ class RegisterController extends Controller
         );
         // Log User in
         Auth::login($user);
+        
         // Route to Dashboard after Log in
         return redirect()->route('dashboard');
     }

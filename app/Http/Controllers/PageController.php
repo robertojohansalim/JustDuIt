@@ -11,8 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
-    public function dashboard(){
-        $allShoe = Shoe::all();
+    public function dashboard(Request $request){
+        $query = $request->get('qs');
+
+        // $allShoe = Shoe::all();
+        $allShoe = ProductController::searchQuery($query, 3);
         $data = [
             "allShoe" => $allShoe
         ];

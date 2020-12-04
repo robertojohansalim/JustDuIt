@@ -34,6 +34,7 @@
         {{-- Item Display END --}}
         @endforeach
     </div>
+    {{ $allShoe->withQueryString()->links() }}
 </div>
 
 

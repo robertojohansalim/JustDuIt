@@ -34,6 +34,12 @@ class ProductController extends Controller
         return $image_name;
     }
 
+    // Public Static Method
+    public static function searchQuery($query, $paginate = 6){
+        $shoes = Shoe::where('name', 'like', "%" . $query . "%")->paginate($paginate);
+        return $shoes;
+    }
+
     // Post Request Handler
     public function add(Request $request){
         // $validator = ProductController::makeValidator($request);
@@ -86,4 +92,5 @@ class ProductController extends Controller
         // Redirect to Dashboard if Succeed
         return redirect()->route('dashboard');
     }
+
 }

@@ -11,9 +11,10 @@
     <div class="top-nav-item navbar-brand">
         <a href="{{ route("dashboard") }}" style="text-decoration: none">Just Du It !</a>
     </div>
-    <form class="form-inline top-nav-item top-nav-searchbar">
+    <form class="form-inline top-nav-item top-nav-searchbar" method="GET" action="{{ route('dashboard') }}">
         <div class="row btn-group">
-            <input class="form-control col-9" type="search" placeholder="Search" aria-label="Search">
+            <input class="form-control col-9" type="search" placeholder="Search" aria-label="Search" name="qs"
+                value="{{ Request::get('qs') }}">
             <button class="btn btn-outline-primary col-3" type="submit">Search</button>
         </div>
     </form>
