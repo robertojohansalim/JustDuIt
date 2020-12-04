@@ -7,7 +7,9 @@
 
 @section('content')
 <div class="container content-container" style="margin-top: 10px">
-    <h1>View Shoe</h1>
+    <div class="title" style="margin-bottom: 35px">
+        <h2>View Shoe</h2>
+    </div>
     <div class="row">
         {{-- @foreach ($collection as $item) --}}
         @foreach ($allShoe as $shoe)
