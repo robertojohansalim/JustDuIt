@@ -15,7 +15,7 @@ class PageController extends Controller
         $query = $request->get('qs');
 
         // $allShoe = Shoe::all();
-        $allShoe = ProductController::searchQuery($query, 3);
+        $allShoe = ProductController::searchQuery($query);
         $data = [
             "allShoe" => $allShoe
         ];
