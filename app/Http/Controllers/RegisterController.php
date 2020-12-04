@@ -29,12 +29,14 @@ class RegisterController extends Controller
         }
 
         // Store Data
-        $user = User::addAndAuthenticateUser(
+        $user = User::addUser(
             $request->get('username'),
             bcrypt($request->get('password')),
             $request->get('email')
         );
-        // return !LoginController::authenticate($request);
+        // Log User in
+        Auth::login($user);
+        // Route to Dashboard after Log in
         return redirect()->route('dashboard');
     }
 }

@@ -46,22 +46,6 @@ class User extends Authenticatable
         return $this->hasOne('App\Cart', 'user_id');
     }
 
-    public static function addAndAuthenticateUser($username, $password, $email, $id_role = 2){
-        $user = new User();
-        $user->username = $username;
-        $user->password = $password;
-        $user->email = $email;
-        $user->id_role = $id_role;
-        if($user->save()){
-            Auth::login($user);
-            return $user;
-        }
-        else{
-            return null;
-        }
-
-    }
-
     public static function addUser($username, $password, $email, $id_role = 2){
         $user = new User();
         $user->username = $username;
