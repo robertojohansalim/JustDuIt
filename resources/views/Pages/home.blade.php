@@ -34,7 +34,9 @@
         {{-- Item Display END --}}
         @endforeach
     </div>
-    {{ $allShoe->withQueryString()->links() }}
+    <div class="row d-flex justify-content-center" style="margin-top: 15px">
+        {{ $allShoe->withQueryString()->links() }}
+    </div>
 </div>
 
 
