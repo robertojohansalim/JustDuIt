@@ -17,29 +17,34 @@
         </div>
         <div class="col-8">
             <h2>{{ $shoe->name }}</h5>
-            <p>Rp. {{ number_format($shoe->price) }}</p>
-            <p>{{ $shoe->description }}</p>
+                <p>Rp. {{ number_format($shoe->price) }}</p>
+                <p>{{ $shoe->description }}</p>
         </div>
     </div>
-    <form class="p-5" action="{{ route('updateProduct', ['id'=>$shoe->id]) }}" method="POST" enctype="multipart/form-data">
+    <form class="p-5" action="{{ route('updateProduct', ['id'=>$shoe->id]) }}" method="POST"
+        enctype="multipart/form-data">
         {{ csrf_field() }}
+        <input type="hidden" name="product_id" value="{{ $shoe->id }}">
+        <input type="hidden" name="product_image_name" value="{{ $shoe->image }}">
         <div class="form-group row">
             <label for="shoeNameForm" class="col-sm-3 col-form-label text-right">Shoe Name</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="shoeNameForm" placeholder="Shoe Name" name="name">
+                <input type="text" class="form-control" id="shoeNameForm" placeholder="Shoe Name" name="name"
+                    value="{{ $shoe->name }}">
             </div>
         </div>
         <div class="form-group row">
             <label for="priceForm" class="col-sm-3 col-form-label text-right">Price</label>
             <div class="col-sm-6">
-                <input type="number" class="form-control" id="priceForm" placeholder="price" name="price">
+                <input type="number" class="form-control" id="priceForm" placeholder="price" name="price"
+                    value="{{ $shoe->price }}">
             </div>
         </div>
         <div class="form-group row">
             <label for="descriptionForm" class="col-sm-3 col-form-label text-right">Description</label>
             <div class="col-sm-6">
-                <textarea class="form-control" id="descriptionForm" placeholder="description" name="description">
-                </textarea>
+                <textarea class="form-control" id="descriptionForm" placeholder="description"
+                    name="description">{{ $shoe->description }}</textarea>
             </div>
         </div>
         <div class="form-group row">

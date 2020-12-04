@@ -8,18 +8,36 @@ use Illuminate\Support\Facades\Validator;
 
 class ProductController extends Controller
 {
-    private static function makeValidator(Request $request){
-        $validator = Validator::make($request->all(),[
+
+    private function makeRules(){
+        return [
             'name'=>'required',
             'price'=> 'required|integer|min:100',
             'description'=> 'required',
             'image'=> 'required|image|mimes:jpeg,bmp,png',
-        ]);
+        ];
+    }
+
+    private function makeValidator(Request $request, $rules = null){
+        if(!$rules){
+            $rules = $this->makeRules();
+        }
+        $validator = Validator::make($request->all(),$rules);
         return $validator;
     }
 
+    private function storeImage($image, $store_path = 'product_image/'){
+        // dump(now()->toDateTimeLocalString());
+        $image_name = uniqid() .'_'. date('dmy_His') .'.'. $image->extension();
+        // dd($image_name);
+        $image->storeAs($store_path, $image_name);
+        return $image_name;
+    }
+
+    // Post Request Handler
     public function add(Request $request){
-        $validator = ProductController::makeValidator($request);
+        // $validator = ProductController::makeValidator($request);
+        $validator = $this->makeValidator($request);
         if($validator->fails()){
             // redirect back to addProduct Page if fails
             return redirect()->route('addProduct')->withInput()->withErrors($validator);
@@ -30,9 +48,8 @@ class ProductController extends Controller
         $productImage = $request->file('image');
 
         // Storing Image at Location
-        $localPath = 'product_image/';
-        $proudctImageName = join("_",explode(" ",$productName)) . '.' . $productImage->extension();
-        $productImage->storeAs($localPath, $proudctImageName);
+        // $path = $this->storeImage($productImage);
+        $proudctImageName = $this->storeImage($productImage);
 
         // Image Add
         $shoe = Shoe::addShoe($productName, $productDescription, $productPrice, $proudctImageName);
@@ -42,24 +59,29 @@ class ProductController extends Controller
     }
 
     public function update(Request $request){
-        $validator = ProductController::makeValidator($request);
+        $rules = $this->makeRules();
+        // Change Rules to allow null Image
+        $rules['image'] = 'image|mimes:jpeg,bmp,png';
+        $validator = $this->makeValidator($request, $rules);
         if($validator->fails()){
             // redirect back to addProduct Page if fails
             return redirect()->route('updateProduct', ['id'=>$request->id])->withInput()->withErrors($validator);
         }
-        $productId = $request->id;
+        // dump($request->all());
+        $productId = $request->get('product_id');
         $productName = $request->get('name');
         $productPrice = $request->get('price');
         $productDescription = $request->get('description');
         $productImage = $request->file('image');
+        $proudctImageName = $request->get('product_image_name');
 
         // Storing Image at Location
-        $localPath = 'product_image/';
-        $proudctImageName = join("_",explode(" ",$productName)) . '.' . $productImage->extension();
-        $productImage->storeAs($localPath, $proudctImageName);
+        if($productImage != null){
+            $proudctImageName = $this->storeImage($productImage);
+        }
 
         // Image Update
-        $shoe = Shoe::editShoe($productId, $productName, $productDescription, $productPrice, $proudctImageName);
+        Shoe::editShoe($productId, $productName, $productDescription, $productPrice, $proudctImageName);
 
         // Redirect to Dashboard if Succeed
         return redirect()->route('dashboard');
