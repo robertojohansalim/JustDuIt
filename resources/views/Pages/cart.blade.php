@@ -10,35 +10,39 @@
     <div class="title" style="margin-bottom: 35px">
         <h2>View Cart</h2>
     </div>
-    @if ($cart_items != null)
+    @if($cart_items == null || count($cart_items) == 0)
+        <div class="alert alert-secondary text-center" role="alert">
+            Cart Is Empty
+        </div>
+    @else
         <div class="row">
-            @foreach ($cart_items as $item)
-            <div class="col-md-12 col-6 card-col">
-                <div class="item" style="display: flex">
-                    <img class="card-img" style="width: 150px; height: 150px"
-                        src="{{ asset('product_image/'. $item->shoe->image) }}">
-                    <div class="card-body" style="margin-top: 40px">
-                        <h6>{{ $item->shoe->name }}</h6>
+            @foreach($cart_items as $item)
+                <div class="col-md-12 col-6 card-col">
+                    <div class="item" style="display: flex">
+                        <img class="card-img" style="width: 150px; height: 150px"
+                            src="{{ asset('product_image/'. $item->shoe->image) }}">
+                        <div class="card-body" style="margin-top: 40px">
+                            <h6>{{ $item->shoe->name }}</h6>
+                        </div>
+                        <div class="card-body" style="margin-top: 40px">
+                            <p>Rp. {{ number_format($item->shoe->price) }}</p>
+                        </div>
+                        <a
+                            href="{{ route('updateCartItem', ['id'=>$item->id]) }}">
+                            <button type="button" class="btn btn-primary" style="margin-top: 50px">Edit</button>
+                        </a>
                     </div>
-                    <div class="card-body" style="margin-top: 40px">
-                        <p>Rp. {{ number_format($item->shoe->price) }}</p>
-                    </div>
-                    <a href="{{ route('updateCartItem', ['id'=>$item->id]) }}">
-                        <button type="button" class="btn btn-primary" style="margin-top: 50px">Edit</button>
-                    </a>
                 </div>
-            </div>
             @endforeach
         </div>
 
-        @if (count($cart_items) != 0)
-            <form action="{{ route('checkoutCart') }}" method="post">
-                {{ csrf_field() }}
-                <input type="hidden" name="cart_id" value="{{ $cart->id }}">
-                <button type="submit" class="btn btn-primary">Check Out</button>
-            </form>
-        @endif
-
+        {{-- @if(count($cart_items) != 0) --}}
+        <form action="{{ route('checkoutCart') }}" method="post">
+            {{ csrf_field() }}
+            <input type="hidden" name="cart_id" value="{{ $cart->id }}">
+            <button type="submit" class="btn btn-primary">Check Out</button>
+        </form>
+        {{-- @endif --}}
     @endif
 </div>
 
