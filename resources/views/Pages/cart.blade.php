@@ -19,8 +19,10 @@
             @foreach($cart_items as $item)
                 <div class="col-md-12 col-6 card-col">
                     <div class="item" style="display: flex">
-                        <img class="card-img" style="width: 150px; height: 150px"
-                            src="{{ asset('product_image/'. $item->shoe->image) }}">
+                        <div class="card-img-frame" style="width: 150px; height: 150px">
+                            <img class="card-img"
+                                src="{{ asset('product_image/'. $item->shoe->image) }}">
+                        </div>
                         <div class="card-body" style="margin-top: 40px">
                             <h6>{{ $item->shoe->name }}</h6>
                         </div>

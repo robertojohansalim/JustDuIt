@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
-    public function dashboard(Request $request){
+    public function dashboard(Request $request)
+    {
         $query = $request->get('qs');
 
         // $allShoe = Shoe::all();
@@ -27,35 +28,39 @@ class PageController extends Controller
         return view('Pages/login');
     }
 
-    public function register(){
+    public function register()
+    {
         return view('Pages/register');
     }
 
-    public function product($id){
+    public function product($id)
+    {
         $shoe = Shoe::find($id);
-        if(!$shoe){
+        if (!$shoe) {
             return abort(404);
         }
         $data = [
-            'shoe'=>$shoe
+            'shoe' => $shoe
         ];
         return view("Pages/product", $data);
     }
 
-    public function addToCart($id){
+    public function addToCart($id)
+    {
         $shoe = Shoe::find($id);
-        if(!$shoe){
+        if (!$shoe) {
             return abort(404);
         }
         $data = [
-            'shoe'=>$shoe
+            'shoe' => $shoe
         ];
         return view("Pages/addToCart", $data);
     }
 
-    public function updateCart($id){
+    public function updateCart($id)
+    {
         $item = CartItem::find($id);
-        if(!$item){
+        if (!$item) {
             return abort(404);
         }
         $data = [
@@ -66,27 +71,28 @@ class PageController extends Controller
         return view("Pages/updateCart", $data);
     }
 
-    public function updateProduct($id){
+    public function updateProduct($id)
+    {
         $shoe = Shoe::find($id);
-        if(!$shoe){
+        if (!$shoe) {
             return abort(404);
         }
         $data = [
-            'shoe'=>$shoe
+            'shoe' => $shoe
         ];
         return view("Pages/updateProduct", $data);
     }
 
-    public function cart(){
+    public function cart()
+    {
         $cart = Auth()->user()->cart;
-        if($cart){
+        if ($cart) {
             $data = [
                 'cart' => $cart,
                 'cart_items' => $cart->items
             ];
             return view('Pages/cart', $data);
-        }
-        else{
+        } else {
             $data = [
                 'cart' => null,
                 'cart_items' => null
@@ -95,39 +101,34 @@ class PageController extends Controller
         }
     }
 
-    public function transaction(){
+    public function transaction()
+    {
         $data = [];
         $headers = [];
-        if(Auth::user()->role->role_name == 'admin'){
-            $headers = TransactionHeader::all();
+        if (Auth::user()->role->role_name == 'admin') {
+            // $headers = TransactionHeader::all()->order;
+            $headers = TransactionHeader::orderBy('date', 'DESC')->paginate(1);
         }
-        if(Auth::user()->role->role_name == 'member'){
+        if (Auth::user()->role->role_name == 'member') {
             // $headers = TransactionHeader::all()->where('id_user','=',Auth()->user()->id)->get();
-            $headers = TransactionHeader::where('id_user','=',Auth()->user()->id)->get();
+            $headers = TransactionHeader::where('id_user', '=', Auth()->user()->id)->orderBy('date', 'DESC')->paginate(1);
         }
-        // May Need to be moved to Queries for Pagination :(
-        $headers = $headers->map(function($transaction){
-            $sum = 0;
-            foreach($transaction->details as $detail){
-                $sum += $detail->price;
-            }
-            $transaction['total_price'] = $sum;
-            return $transaction;
-        });
         $data = [
-            'transactions'=>$headers
+            'transactions' => $headers
         ];
         return view('Pages/transaction', $data);
     }
 
-    public function addProduct(){
+    public function addProduct()
+    {
         return view('Pages/addProduct');
     }
 
 
     // For Testing Perpose
-    public function test(Request $request){
-        if($request->isMethod("POST")){
+    public function test(Request $request)
+    {
+        if ($request->isMethod("POST")) {
             // cook
         }
         // CartController::insertIntoCart(1, 10);
@@ -136,7 +137,7 @@ class PageController extends Controller
         dump($header);
         dd($detail);
         $data = [
-            'header' =>$header
+            'header' => $header
         ];
         return view('test', $data);
     }
