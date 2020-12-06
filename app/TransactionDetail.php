@@ -31,7 +31,6 @@ class TransactionDetail extends Model
         $detail->id_shoe = $shoe_id;
         $detail->image = $image;
         $detail->price = $price;
-        $detail->price = $price;
         $detail->quantity = $quantity;
         $detail->save();
         return $detail;

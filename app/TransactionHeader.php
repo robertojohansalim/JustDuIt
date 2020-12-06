@@ -26,7 +26,7 @@ class TransactionHeader extends Model
 
     public function totalPrice()
     {
-        return $this->hasMany('App\TransactionDetail', 'id_transaction_header', 'id')->selectRaw('sum(price) as value')->groupBy('id_transaction_header');
+        return $this->hasMany('App\TransactionDetail', 'id_transaction_header', 'id')->selectRaw('sum(price*quantity) as value')->groupBy('id_transaction_header');
     }
 
     public static function makeTransactionHeader($user_id, $date)

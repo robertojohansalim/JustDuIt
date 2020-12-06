@@ -27,7 +27,7 @@
                             <h6>{{ $item->shoe->name }}</h6>
                         </div>
                         <div class="card-body" style="margin-top: 40px">
-                            <p>Rp. {{ number_format($item->shoe->price) }}</p>
+                            <p>Rp. {{ (number_format($item->shoe->price * $item->quantity)) }}</p>
                         </div>
                         <a
                             href="{{ route('updateCartItem', ['id'=>$item->id]) }}">
@@ -42,7 +42,9 @@
         <form action="{{ route('checkoutCart') }}" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="cart_id" value="{{ $cart->id }}">
-            <button type="submit" class="btn btn-primary">Check Out</button>
+            <div class="row d-flex justify-content-center" style="margin-top: 25px">
+                <button type="submit" class="btn btn-primary">Check Out</button>
+            </div>
         </form>
         {{-- @endif --}}
     @endif
