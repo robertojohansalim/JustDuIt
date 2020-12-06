@@ -1,12 +1,11 @@
 @extends('../Layouts/mainTemplate')
-
 @section('style')
 <link rel="stylesheet" href="{{ asset('asset/css/item-card.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/page/home.css') }}">
 @endsection
 
 @section('content')
-<div class="container content-container" style="margin-top: 10px">
+<div class="container content-container p-5" style="margin-top: 10px">
     <div class="title" style="margin-bottom: 35px">
         <h2>View Cart</h2>
     </div>
