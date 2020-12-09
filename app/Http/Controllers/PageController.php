@@ -107,11 +107,11 @@ class PageController extends Controller
         $headers = [];
         if (Auth::user()->role->role_name == 'admin') {
             // $headers = TransactionHeader::all()->order;
-            $headers = TransactionHeader::orderBy('date', 'DESC')->paginate(1);
+            $headers = TransactionHeader::orderBy('date', 'DESC')->paginate(6);
         }
         if (Auth::user()->role->role_name == 'member') {
             // $headers = TransactionHeader::all()->where('id_user','=',Auth()->user()->id)->get();
-            $headers = TransactionHeader::where('id_user', '=', Auth()->user()->id)->orderBy('date', 'DESC')->paginate(1);
+            $headers = TransactionHeader::where('id_user', '=', Auth()->user()->id)->orderBy('date', 'DESC')->paginate(6);
         }
         $data = [
             'transactions' => $headers
