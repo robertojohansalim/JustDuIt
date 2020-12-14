@@ -68,7 +68,7 @@
         </div>
     </div>
     <div class="form-group row d-flex justify-content-center">
-        <div class="col-sm-3"></div>
+        <div class="col-sm-5"></div>
         <div class="col-sm-6">
             <button type="submit" class="btn btn-primary">Register</button>
         </div>
