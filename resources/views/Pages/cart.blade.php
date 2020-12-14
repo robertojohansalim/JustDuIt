@@ -1,11 +1,12 @@
 @extends('../Layouts/mainTemplate')
+
 @section('style')
 <link rel="stylesheet" href="{{ asset('asset/css/item-card.css') }}">
 <link rel="stylesheet" href="{{ asset('asset/css/page/home.css') }}">
 @endsection
 
 @section('content')
-<div class="container content-container p-5" style="margin-top: 10px">
+<div class="container content-container" style="margin-top: 10px">
     <div class="title" style="margin-bottom: 35px">
         <h2>View Cart</h2>
     </div>
@@ -41,7 +42,7 @@
         <form action="{{ route('checkoutCart') }}" method="post">
             {{ csrf_field() }}
             <input type="hidden" name="cart_id" value="{{ $cart->id }}">
-            <div class="row d-flex justify-content-center" style="margin-top: 25px">
+            <div class="row d-flex justify-content-center" style="margin-top: 25px; margin-bottom: 25px">
                 <button type="submit" class="btn btn-primary">Check Out</button>
             </div>
         </form>
