@@ -26,7 +26,7 @@
                         {{ csrf_field() }}
                         <input type="hidden" name="cart_item_id" value="{{ $cart_id }}">
                         <label for="qtyForm" class="col-sm-1 col-form-label text-left"
-                            style="margin-right: 40px">Quantity</label>
+                            style="margin-right: 55px">Quantity</label>
                         <button type="button" class="minus"><i class="fas fa-minus"></i></button>
                         <input class="quantity" min="0" name="quantity" value="{{ $quantity }}" type="number"
                             style="width: 50px; text-align: center">
