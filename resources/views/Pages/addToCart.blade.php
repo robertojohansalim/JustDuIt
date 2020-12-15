@@ -10,12 +10,12 @@
 <div class="container content-container">
     <h2><br></h2>
     <div class="row">
-        <div class="col-4">
-            <div class="card-img-frame" style="width: 250px; height: 250px">
+        <div class="col-md-4">
+            <div class="card-img-frame" style="max-width: 250px; height: 250px">
                 <img class="card-img" src="{{ asset('product_image/'.$shoe->image) }}">
             </div>
         </div>
-        <div class="col-8">
+        <div class="col-md-8">
             <h2>{{ $shoe->name }}</h5>
                 <p>Rp. {{ number_format($shoe->price) }}</p>
                 <p>{{ $shoe->description }}</p>

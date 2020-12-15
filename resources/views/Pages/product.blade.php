@@ -10,7 +10,7 @@
     <h2><br></h2>
     <div class="row">
         <div class="col-4">
-            <div class="card-img-frame" style="height: 250px; width: 250px">
+            <div class="card-img-frame" style="height: 250px; max-width: 250px">
                 <img class="card-img" src="{{ asset('product_image/'. $shoe->image) }}">
             </div>
         </div>

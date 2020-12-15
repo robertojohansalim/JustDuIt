@@ -18,8 +18,9 @@
 
 .card-img-frame>.card-img {
     width: 100%;
+    /* height: 100%; */
     position: absolute;
-    bottom: 0;
+    /* bottom: 0; */
 }
 
 .card-body>h5 {

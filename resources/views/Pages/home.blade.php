@@ -23,7 +23,7 @@
             <div class="col-md-4 col-6 card-col">
                 <a class="card"
                     href="{{ route('product', ['id'=>$shoe->id]) }}"
-                    style="text-decoration: none; width:250px">
+                    style="text-decoration: none; max-width:250px">
                     <div class="card-img-frame" style="height: 248px">
                         <img class="card-img"
                             src="{{ asset('product_image/' . $shoe->image) }}">
