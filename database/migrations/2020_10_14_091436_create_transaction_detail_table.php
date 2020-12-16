@@ -22,8 +22,6 @@ class CreateTransactionDetailTable extends Migration
 
             // Constraint
             $table->primary(['id_transaction_header', 'id_shoe']);
-            // $table->foreign('id_transaction_header')->references('id')->on('transaction_header');
-            // $table->foreign('id_shoe')->references('id')->on('shoe');
         });
     }
 

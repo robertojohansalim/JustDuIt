@@ -17,10 +17,6 @@ class CreateTransactionHeaderTable extends Migration
             $table->id();
             $table->integer("id_user");
             $table->dateTime('date');
-            // $table->timestamps('date');
-
-            // Constraint
-            // $table->foreign('id_user')->references('id')->on('user');
         });
     }
 
